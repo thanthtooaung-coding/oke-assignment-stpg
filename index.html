@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Party Time - E-commerce</title>
+    <title>Paper Print - E-commerce</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -157,6 +157,7 @@
         .header-title {
             font-size: 1.5rem;
             font-weight: 700;
+            cursor: pointer;
         }
         .main-nav {
             display: none; /* Hidden on mobile */
@@ -878,7 +879,7 @@
     <header id="main-header" class="main-header">
         <div class="container">
             <div class="header-content">
-                <h1 class="header-title">Party Time</h1>
+                <h1 class="header-title" onclick="showPage('home', document.querySelector('.nav-link[href=\'#home\']'))">Paper Print</h1>
                 <nav class="main-nav">
                     <a href="#home" class="nav-link active" onclick="showPage('home', this)">Home</a>
                     <a href="#packages" class="nav-link" onclick="showPage('packages', this)">Packages & Discounts</a>
@@ -913,7 +914,7 @@
     <!-- Simplified Header for Auth Pages -->
     <header id="auth-header" class="auth-header hidden">
         <div class="container">
-            <h1 class="header-title">Party Time</h1>
+            <h1 class="header-title">Paper Print</h1>
         </div>
     </header>
 
