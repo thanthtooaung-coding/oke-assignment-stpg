@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Party Time - E-commerce</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide-react@0.292.0/dist/lucide-react.js"></script>
+    <script src="https://unpkg.com/lucide-icons"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .nav-link.active {
+            font-weight: 700;
+            border-bottom: 2px solid #000;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+
+    <!-- Main Header -->
+    <header id="main-header" class="border-b">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <h1 class="text-2xl font-bold">Party Time</h1>
+            <nav class="hidden md:flex items-center space-x-6">
+                <a href="#home" class="nav-link text-gray-600 hover:text-black pb-1 active" onclick="showPage('home', this)">Home</a>
+                <a href="#packages" class="nav-link text-gray-600 hover:text-black pb-1" onclick="showPage('packages', this)">Packages & Discounts</a>
+                <a href="#products" class="nav-link text-gray-600 hover:text-black pb-1" onclick="showPage('products', this)">Services & Products</a>
+                <a href="#contact" class="nav-link text-gray-600 hover:text-black pb-1" onclick="showPage('contact', this)">Contact Us</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <div class="relative hidden sm:block">
+                    <input type="text" placeholder="Search" class="border rounded-full py-1.5 px-4 text-sm w-40 focus:outline-none focus:ring-2 focus:ring-gray-300">
+                    <i data-lucide="search" class="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400"></i>
+                </div>
+                <i data-lucide="shopping-cart" class="w-6 h-6 text-gray-600 cursor-pointer"></i>
+                <i data-lucide="user-circle" class="w-6 h-6 text-gray-600 cursor-pointer" onclick="showPage('profile')"></i>
+                <button class="bg-cyan-500 text-white text-sm font-semibold px-4 py-2 rounded-lg hover:bg-cyan-600" onclick="showPage('signin')">Log In</button>
+            </div>
+        </div>
+        <!-- Mobile Nav -->
+         <nav class="md:hidden px-4 pb-3">
+            <a href="#home" class="nav-link block py-1 text-center text-gray-600 hover:text-black" onclick="showPage('home', this)">Home</a>
+            <a href="#packages" class="nav-link block py-1 text-center text-gray-600 hover:text-black" onclick="showPage('packages', this)">Packages & Discounts</a>
+            <a href="#products" class="nav-link block py-1 text-center text-gray-600 hover:text-black" onclick="showPage('products', this)">Services & Products</a>
+            <a href="#contact" class="nav-link block py-1 text-center text-gray-600 hover:text-black" onclick="showPage('contact', this)">Contact Us</a>
+        </nav>
+    </header>
+
+    <!-- Simplified Header for Auth Pages -->
+    <header id="auth-header" class="border-b hidden">
+        <div class="container mx-auto px-4 py-3">
+            <h1 class="text-2xl font-bold text-center md:text-left">Paper Print</h1>
+        </div>
+    </header>
+
+
+    <main id="app-content" class="container mx-auto px-4 py-8">
+
+        <!-- Home Page -->
+        <section id="home-page" class="page">
+            <div class="bg-blue-100 text-center py-3 mb-8 rounded-lg">
+                <p>New Member Get 15% Off <a href="#" class="font-bold underline ml-2">Learn More</a></p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-12">
+                <div>
+                    <h2 class="text-4xl font-bold mb-2">Breaking &</h2>
+                    <h2 class="text-4xl font-bold mb-4">Faith Wile Collection</h2>
+                    <button class="bg-black text-white px-6 py-2 rounded-lg font-semibold hover:bg-gray-800">Shop Now</button>
+                </div>
+                <div class="bg-gray-200 w-full h-64 md:h-80 rounded-lg flex items-center justify-center">
+                    <img src="https://placehold.co/600x400/e2e8f0/cccccc?text=+" class="w-full h-full object-cover rounded-lg" alt="Placeholder Image">
+                </div>
+            </div>
+
+            <h3 class="text-2xl font-bold mb-6">The Latest</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <div class="group">
+                    <div class="bg-gray-200 w-full h-64 rounded-lg mb-2 flex items-center justify-center">
+                       <img src="https://placehold.co/600x400/e2e8f0/cccccc?text=+" class="w-full h-full object-cover rounded-lg" alt="Placeholder Image">
+                    </div>
+                    <button class="font-semibold underline group-hover:no-underline">Shop Now</button>
+                </div>
+                <div class="group">
+                    <div class="bg-gray-200 w-full h-64 rounded-lg mb-2 flex items-center justify-center">
+                        <img src="https://placehold.co/600x400/e2e8f0/cccccc?text=+" class="w-full h-full object-cover rounded-lg" alt="Placeholder Image">
+                    </div>
+                    <button class="font-semibold underline group-hover:no-underline">Shop Now</button>
+                </div>
+            </div>
+
+            <h3 class="text-2xl font-bold mb-6">Featured</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+                <div>
+                    <div class="bg-gray-200 w-full h-80 rounded-lg mb-2 flex items-center justify-center">
+                        <img src="https://placehold.co/400x600/e2e8f0/cccccc?text=+" class="w-full h-full object-cover rounded-lg" alt="Placeholder Image">
+                    </div>
+                    <p class="font-semibold text-center">Cool For Summer</p>
+                </div>
+                <div>
+                    <div class="bg-gray-200 w-full h-80 rounded-lg mb-2 flex items-center justify-center">
+                         <img src="https://placehold.co/400x600/e2e8f0/cccccc?text=+" class="w-full h-full object-cover rounded-lg" alt="Placeholder Image">
+                    </div>
+                    <p class="font-semibold text-center">Luxury Vibe</p>
+                </div>
+                <div>
+                    <div class="bg-gray-200 w-full h-80 rounded-lg mb-2 flex items-center justify-center">
+                        <img src="https://placehold.co/400x600/e2e8f0/cccccc?text=+" class="w-full h-full object-cover rounded-lg" alt="Placeholder Image">
+                    </div>
+                    <p class="font-semibold text-center">For Kids</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Packages & Discounts Page -->
+        <section id="packages-page" class="page hidden">
+            <h2 class="text-3xl font-bold text-center mb-8">Membership</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                <!-- Membership Cards -->
+                <div class="border rounded-lg p-6 text-center">
+                     <div class="bg-gray-200 w-full h-40 rounded-lg mb-4 flex items-center justify-center">
+                        <img src="https://placehold.co/300x200/e2e8f0/cccccc?text=+" class="w-full h-full object-cover rounded-lg" alt="Placeholder Image">
+                    </div>
+                    <h3 class="text-xl font-bold">Bronze Member</h3>
+                    <p class="text-gray-500 my-2 text-sm">Access Member Only Sales and Basic Customer Support.</p>
+                    <p class="font-bold text-lg mb-4">Monthly Fee - $9.99</p>
+                    <button class="bg-cyan-500 text-white w-full py-2 rounded-lg hover:bg-cyan-600">Click to Buy</button>
+                </div>
+                <div class="border rounded-lg p-6 text-center">
+                     <div class="bg-gray-200 w-full h-40 rounded-lg mb-4 flex items-center justify-center">
+                        <img src="https://placehold.co/300x200/e2e8f0/cccccc?text=+" class="w-full h-full object-cover rounded-lg" alt="Placeholder Image">
+                    </div>
+                    <h3 class="text-xl font-bold">Silver Member</h3>
+                    <p class="text-gray-500 my-2 text-sm">Access Member Only Sales, Birthday Discount, and Basic Customer Support.</p>
+                     <p class="font-bold text-lg mb-4">Monthly Fee - $19.99</p>
+                    <button class="bg-cyan-500 text-white w-full py-2 rounded-lg hover:bg-cyan-600">Click to Buy</button>
+                </div>
+                <div class="border rounded-lg p-6 text-center">
+                     <div class="bg-gray-200 w-full h-40 rounded-lg mb-4 flex items-center justify-center">
+                        <img src="https://placehold.co/300x200/e2e8f0/cccccc?text=+" class="w-full h-full object-cover rounded-lg" alt="Placeholder Image">
+                    </div>
+                    <h3 class="text-xl font-bold">Gold Member</h3>
+                    <p class="text-gray-500 my-2 text-sm">All Silver benefits, plus Free Shipping and Priority Customer Support.</p>
+                     <p class="font-bold text-lg mb-4">Monthly Fee - $29.99</p>
+                    <button class="bg-cyan-500 text-white w-full py-2 rounded-lg hover:bg-cyan-600">Click to Buy</button>
+                </div>
+            </div>
+
+            <h2 class="text-3xl font-bold text-center mb-8">DISCOUNTS</h2>
+             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Discount Cards -->
+                <div class="bg-gray-100 rounded-lg p-6">
+                    <h3 class="text-xl font-bold mb-2">First-Time Visitor Discounts</h3>
+                    <p class="text-gray-600 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <button class="bg-cyan-500 text-white px-6 py-2 rounded-lg hover:bg-cyan-600">Claim 20% Discount</button>
+                </div>
+                 <div class="bg-gray-700 text-white rounded-lg p-6">
+                    <h3 class="text-xl font-bold mb-2">Sign Up Bonus</h3>
+                    <p class="text-gray-300 mb-4">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <button class="bg-cyan-500 text-white px-6 py-2 rounded-lg hover:bg-cyan-600" onclick="showPage('signup')">Sign Up & Save 15%</button>
+                </div>
+                 <div class="bg-gray-700 text-white rounded-lg p-6">
+                    <h3 class="text-xl font-bold mb-2">Referral Program</h3>
+                    <p class="text-gray-300 mb-4">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                    <button class="bg-cyan-500 text-white px-6 py-2 rounded-lg hover:bg-cyan-600">Refer Friend & Save 25%</button>
+                </div>
+                <div class="bg-gray-100 rounded-lg p-6">
+                    <h3 class="text-xl font-bold mb-2">Social Media Special</h3>
+                    <p class="text-gray-600 mb-4">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <button class="bg-cyan-500 text-white px-6 py-2 rounded-lg hover:bg-cyan-600">Follow & Save 20%</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services & Products Page -->
+        <section id="products-page" class="page hidden">
+            <div class="mb-12">
+                <h2 class="text-2xl font-bold mb-4">Bags</h2>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+                    <div class="bg-gray-200 h-48 rounded-lg"></div>
+                    <div class="bg-gray-200 h-48 rounded-lg"></div>
+                    <div class="bg-gray-200 h-48 rounded-lg"></div>
+                    <div class="bg-gray-200 h-48 rounded-lg"></div>
+                    <div class="bg-gray-200 h-48 rounded-lg"></div>
+                    <div class="bg-gray-200 h-48 rounded-lg"></div>
+                    <div class="bg-gray-200 h-48 rounded-lg"></div>
+                    <div class="bg-gray-200 h-48 rounded-lg"></div>
+                </div>
+            </div>
+            <div class="mb-12">
+                <h2 class="text-2xl font-bold mb-4">Mugs</h2>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+                    <div class="bg-gray-200 h-48 rounded-lg"></div>
+                    <div class="bg-gray-200 h-48 rounded-lg"></div>
+                    <div class="bg-gray-200 h-48 rounded-lg"></div>
+                    <div class="bg-gray-200 h-48 rounded-lg"></div>
+                </div>
+            </div>
+            <div class="mb-12">
+                <h2 class="text-2xl font-bold mb-4">T-Shirt</h2>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+                     <div class="bg-gray-200 h-48 rounded-lg"></div>
+                    <div class="bg-gray-200 h-48 rounded-lg"></div>
+                    <div class="bg-gray-200 h-48 rounded-lg"></div>
+                    <div class="bg-gray-200 h-48 rounded-lg"></div>
+                    <div class="bg-gray-200 h-48 rounded-lg"></div>
+                    <div class="bg-gray-200 h-48 rounded-lg"></div>
+                </div>
+            </div>
+             <div class="mb-12">
+                <h2 class="text-2xl font-bold mb-4">Calendars</h2>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+                     <div class="bg-gray-200 h-48 rounded-lg"></div>
+                    <div class="bg-gray-200 h-48 rounded-lg"></div>
+                    <div class="bg-gray-200 h-48 rounded-lg"></div>
+                </div>
+            </div>
+            <div>
+                <h2 class="text-2xl font-bold mb-4">Canvas Prints</h2>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+                    <div class="bg-gray-200 h-48 rounded-lg"></div>
+                     <div class="bg-gray-200 h-48 rounded-lg"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Us Page -->
+        <section id="contact-page" class="page hidden">
+            <h2 class="text-3xl font-bold mb-4">Who We Are</h2>
+            <p class="text-gray-600 mb-12 leading-relaxed">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+
+            <h2 class="text-3xl font-bold text-center mb-6">My Team Introduction</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <div class="text-center">
+                    <div class="bg-gray-200 w-40 h-40 rounded-lg mx-auto mb-4"></div>
+                    <p class="text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                </div>
+                <div class="text-center">
+                    <div class="bg-gray-200 w-40 h-40 rounded-lg mx-auto mb-4"></div>
+                    <p class="text-gray-600">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div>
+                <div class="text-center">
+                    <div class="bg-gray-200 w-40 h-40 rounded-lg mx-auto mb-4"></div>
+                    <p class="text-gray-600">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                </div>
+            </div>
+
+            <div class="max-w-2xl mx-auto border rounded-lg p-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Your Name</label>
+                        <input type="text" id="name" class="w-full border-gray-300 rounded-md shadow-sm focus:border-cyan-500 focus:ring-cyan-500">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Your Email</label>
+                        <input type="email" id="email" class="w-full border-gray-300 rounded-md shadow-sm focus:border-cyan-500 focus:ring-cyan-500">
+                    </div>
+                </div>
+                <div class="mb-4">
+                     <label for="review" class="block text-sm font-medium text-gray-700 mb-1">Enter Your Review For Our Product</label>
+                     <textarea id="review" rows="4" class="w-full border-gray-300 rounded-md shadow-sm focus:border-cyan-500 focus:ring-cyan-500"></textarea>
+                </div>
+                 <p class="text-xs text-gray-500 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <button class="bg-cyan-500 text-white font-semibold px-6 py-2 rounded-lg hover:bg-cyan-600">Submit</button>
+            </div>
+        </section>
+
+        <!-- Sign Up Page -->
+        <section id="signup-page" class="page hidden">
+             <div class="max-w-md mx-auto bg-white p-8 rounded-xl shadow-lg border">
+                <h2 class="text-3xl font-bold text-center mb-6">SIGN UP</h2>
+                <form>
+                    <div class="mb-4">
+                        <label for="signup-email" class="block text-sm font-semibold text-gray-700 mb-1">ENTER YOUR EMAIL</label>
+                        <input type="email" id="signup-email" class="w-full border-gray-400 border-2 p-2 rounded-md focus:outline-none focus:border-cyan-500">
+                    </div>
+                    <div class="grid grid-cols-2 gap-4 mb-4">
+                        <div>
+                            <label for="first-name" class="block text-sm font-semibold text-gray-700 mb-1">FIRST NAME</label>
+                            <input type="text" id="first-name" class="w-full border-gray-400 border-2 p-2 rounded-md focus:outline-none focus:border-cyan-500">
+                        </div>
+                        <div>
+                            <label for="last-name" class="block text-sm font-semibold text-gray-700 mb-1">LAST NAME</label>
+                            <input type="text" id="last-name" class="w-full border-gray-400 border-2 p-2 rounded-md focus:outline-none focus:border-cyan-500">
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <label for="signup-password" class="block text-sm font-semibold text-gray-700 mb-1">ENTER PASSWORD</label>
+                        <input type="password" id="signup-password" class="w-full border-gray-400 border-2 p-2 rounded-md focus:outline-none focus:border-cyan-500">
+                    </div>
+                    <div class="flex items-center mb-6">
+                        <input type="checkbox" id="terms" class="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500">
+                        <label for="terms" class="ml-2 text-sm text-gray-600">I Have Read and accept our rule <a href="#" class="text-cyan-600 font-semibold hover:underline">Terms & Conditions</a></label>
+                    </div>
+                    <button type="submit" class="w-full bg-black text-white font-bold py-3 rounded-lg hover:bg-gray-800">Start Creating Now</button>
+                </form>
+                <div class="flex items-center my-6">
+                    <div class="flex-grow border-t border-gray-300"></div>
+                    <span class="px-4 text-sm text-gray-500">Or Sign Up With</span>
+                    <div class="flex-grow border-t border-gray-300"></div>
+                </div>
+                 <div class="flex justify-center space-x-4 mb-6">
+                    <button class="w-12 h-12 border-2 border-cyan-400 rounded-lg flex items-center justify-center text-cyan-400 font-bold">F</button>
+                    <button class="w-12 h-12 border-2 border-yellow-400 rounded-lg flex items-center justify-center text-yellow-400 font-bold">G</button>
+                    <button class="w-12 h-12 border-2 border-green-400 rounded-lg flex items-center justify-center text-green-400 font-bold">L</button>
+                </div>
+                <p class="text-center text-sm">Already Account? <a href="#signin" class="font-bold hover:underline" onclick="showPage('signin')">Sign In</a></p>
+            </div>
+        </section>
+
+        <!-- Sign In Page -->
+        <section id="signin-page" class="page hidden">
+            <div class="max-w-md mx-auto bg-white p-8 rounded-xl shadow-lg border">
+                <h2 class="text-3xl font-bold text-center mb-6">SIGN IN</h2>
+                <form>
+                    <div class="mb-4">
+                        <label for="signin-email" class="block text-sm font-semibold text-gray-700 mb-1">ENTER YOUR EMAIL</label>
+                        <input type="email" id="signin-email" class="w-full border-gray-400 border-2 p-2 rounded-md focus:outline-none focus:border-cyan-500">
+                    </div>
+                    <div class="mb-6">
+                        <label for="signin-password" class="block text-sm font-semibold text-gray-700 mb-1">ENTER PASSWORD</label>
+                        <input type="password" id="signin-password" class="w-full border-gray-400 border-2 p-2 rounded-md focus:outline-none focus:border-cyan-500">
+                    </div>
+                    <button type="submit" class="w-full bg-black text-white font-bold py-3 rounded-lg hover:bg-gray-800">Sign In</button>
+                </form>
+                <div class="flex items-center my-6">
+                    <div class="flex-grow border-t border-gray-300"></div>
+                    <span class="px-4 text-sm text-gray-500">Or Sign In With</span>
+                    <div class="flex-grow border-t border-gray-300"></div>
+                </div>
+                 <div class="flex justify-center space-x-4 mb-6">
+                    <button class="w-12 h-12 border-2 border-cyan-400 rounded-lg flex items-center justify-center text-cyan-400 font-bold">F</button>
+                    <button class="w-12 h-12 border-2 border-yellow-400 rounded-lg flex items-center justify-center text-yellow-400 font-bold">G</button>
+                    <button class="w-12 h-12 border-2 border-green-400 rounded-lg flex items-center justify-center text-green-400 font-bold">L</button>
+                </div>
+                <div class="text-center text-sm">
+                    <a href="#" class="font-semibold hover:underline">Forgot Your Password</a>
+                    <span class="mx-2">Or</span>
+                    <a href="#signup" class="font-semibold hover:underline" onclick="showPage('signup')">Create a New Account</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Profile Page -->
+        <section id="profile-page" class="page hidden">
+            <div class="max-w-sm mx-auto bg-orange-100 p-8 rounded-xl shadow-lg border border-orange-200">
+                <div class="relative mb-4">
+                    <div class="w-48 h-24 bg-white rounded-t-lg mx-auto"></div>
+                    <div class="absolute top-12 left-1/2 -translate-x-1/2 w-24 h-24 bg-white rounded-full border-4 border-orange-100"></div>
+                </div>
+                <div class="text-center pt-8">
+                    <h3 class="font-bold text-xl mb-2">Nickname</h3>
+                    <button class="bg-white text-orange-500 border border-orange-500 px-4 py-1 rounded-full text-sm font-semibold mb-6 hover:bg-orange-50">Edit Profile</button>
+                    
+                    <div class="space-y-3">
+                        <button class="w-full bg-white p-3 rounded-lg text-left font-semibold border hover:bg-gray-50">Account Information</button>
+                        <button class="w-full bg-white p-3 rounded-lg text-left font-semibold border hover:bg-gray-50">View Member</button>
+                        <button class="w-full bg-white p-3 rounded-lg text-left font-semibold border hover:bg-gray-50">Order History</button>
+                        <button class="w-full bg-white p-3 rounded-lg text-left font-semibold border border-red-500 text-red-500 hover:bg-red-50">Log Out</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Main Footer -->
+    <footer id="main-footer" class="bg-white border-t mt-12">
+        <div class="container mx-auto px-4 py-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h4 class="font-bold text-lg">ABOUT & CONTACT US</h4>
+                    <p class="text-gray-500">Get Enjoy Your Shopping Plan</p>
+                    <p class="text-gray-500">Thank You</p>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-4">
+                     <button class="flex-1 bg-cyan-500 text-white font-semibold py-3 rounded-lg hover:bg-cyan-600" onclick="showPage('contact')">Contact Us</button>
+                     <button class="flex-1 border-2 border-cyan-500 text-cyan-500 font-semibold py-3 rounded-lg hover:bg-cyan-50">Become A Member</button>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Contact Page Footer -->
+    <footer id="contact-footer" class="hidden bg-orange-400 text-white mt-12">
+        <div class="container mx-auto px-4 py-8 text-center">
+            <h3 class="text-2xl font-bold mb-2">Please Follow Us On FACEBOOK, INSTAGRAM, LINE</h3>
+            <p>Contact with us on social media and Get 20% Off</p>
+        </div>
+    </footer>
+
+    <script>
+        // --- JAVASCRIPT FOR PAGE NAVIGATION ---
+
+        // Store references to elements to avoid repeated lookups
+        const pages = document.querySelectorAll('.page');
+        const mainHeader = document.getElementById('main-header');
+        const authHeader = document.getElementById('auth-header');
+        const mainFooter = document.getElementById('main-footer');
+        const contactFooter = document.getElementById('contact-footer');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        // The function to switch between "pages"
+        function showPage(pageId, clickedLink) {
+            // Hide all pages first
+            pages.forEach(page => {
+                page.classList.add('hidden');
+            });
+
+            // Show the requested page
+            const targetPage = document.getElementById(pageId + '-page');
+            if (targetPage) {
+                targetPage.classList.remove('hidden');
+            }
+
+            // Handle header and footer visibility
+            const isAuthPage = pageId === 'signin' || pageId === 'signup' || pageId === 'profile';
+            mainHeader.classList.toggle('hidden', isAuthPage);
+            authHeader.classList.toggle('hidden', !isAuthPage);
+            mainFooter.classList.toggle('hidden', isAuthPage || pageId === 'contact');
+            contactFooter.classList.toggle('hidden', pageId !== 'contact');
+
+            // Update active state on navigation links
+            if (clickedLink) {
+                 navLinks.forEach(link => {
+                    link.classList.remove('active');
+                });
+                // Add active class to all links pointing to the same pageId
+                document.querySelectorAll(`.nav-link[href="#${pageId}"]`).forEach(link => {
+                     link.classList.add('active');
+                });
+            }
+            
+            // Scroll to the top of the page on navigation
+            window.scrollTo(0, 0);
+        }
+
+        // Initialize Lucide icons
+        lucide.createIcons();
+        
+        // Ensure the home page is shown on initial load
+        document.addEventListener('DOMContentLoaded', () => {
+            showPage('home', document.querySelector('.nav-link[href="#home"]'));
+        });
+
+    </script>
+</body>
+</html>
