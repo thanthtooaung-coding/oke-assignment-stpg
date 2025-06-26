@@ -77,9 +77,6 @@ party-time-ecommerce/
 │
 ├── index.html              # Main HTML file with all pages
 ├── README.md              # Project documentation
-└── assets/                # (Optional) Additional assets
-    ├── images/           # Product images
-    └── icons/            # Custom icons
 ```
 
 ## 🎯 Pages Overview
