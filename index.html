@@ -7,8 +7,7 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide-react@0.292.0/dist/lucide-react.js"></script>
-    <script src="https://unpkg.com/lucide-icons"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -58,7 +57,7 @@
     <!-- Simplified Header for Auth Pages -->
     <header id="auth-header" class="border-b hidden">
         <div class="container mx-auto px-4 py-3">
-            <h1 class="text-2xl font-bold text-center md:text-left">Paper Print</h1>
+            <h1 class="text-2xl font-bold text-center md:text-left">Party Time</h1>
         </div>
     </header>
 
@@ -183,54 +182,103 @@
 
         <!-- Services & Products Page -->
         <section id="products-page" class="page hidden">
+            <!-- Product Card Component -->
             <div class="mb-12">
-                <h2 class="text-2xl font-bold mb-4">Bags</h2>
-                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
-                    <div class="bg-gray-200 h-48 rounded-lg"></div>
-                    <div class="bg-gray-200 h-48 rounded-lg"></div>
-                    <div class="bg-gray-200 h-48 rounded-lg"></div>
-                    <div class="bg-gray-200 h-48 rounded-lg"></div>
-                    <div class="bg-gray-200 h-48 rounded-lg"></div>
-                    <div class="bg-gray-200 h-48 rounded-lg"></div>
-                    <div class="bg-gray-200 h-48 rounded-lg"></div>
-                    <div class="bg-gray-200 h-48 rounded-lg"></div>
+                <h2 class="text-2xl font-bold mb-6">Bags</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10">
+                    <!-- Product 1 -->
+                    <div class="group relative border rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300">
+                        <div class="aspect-w-1 aspect-h-1 w-full bg-gray-200">
+                             <img src="https://placehold.co/400x400/34d399/ffffff?text=Bag+1" alt="Green tote bag." class="w-full h-full object-cover object-center group-hover:opacity-80 transition-opacity">
+                        </div>
+                        <div class="p-4 flex flex-col flex-grow">
+                            <h3 class="text-sm text-gray-700 font-medium">
+                                <a href="#"><span aria-hidden="true" class="absolute inset-0"></span>Eco-Friendly Tote</a>
+                            </h3>
+                            <p class="text-lg font-semibold text-gray-900 mt-1">$45.00</p>
+                        </div>
+                         <div class="absolute bottom-0 left-0 right-0 p-4 bg-white/90 backdrop-blur-sm translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out">
+                            <button class="w-full bg-cyan-500 text-white text-sm font-semibold py-2 rounded-md hover:bg-cyan-600">Add to Cart</button>
+                        </div>
+                    </div>
+                    <!-- Product 2 -->
+                    <div class="group relative border rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300">
+                        <div class="aspect-w-1 aspect-h-1 w-full bg-gray-200">
+                             <img src="https://placehold.co/400x400/60a5fa/ffffff?text=Bag+2" alt="Blue backpack." class="w-full h-full object-cover object-center group-hover:opacity-80 transition-opacity">
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-sm text-gray-700 font-medium">
+                                <a href="#"><span aria-hidden="true" class="absolute inset-0"></span>Adventure Backpack</a>
+                            </h3>
+                            <p class="text-lg font-semibold text-gray-900 mt-1">$80.00</p>
+                        </div>
+                         <div class="absolute bottom-0 left-0 right-0 p-4 bg-white/90 backdrop-blur-sm translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out">
+                            <button class="w-full bg-cyan-500 text-white text-sm font-semibold py-2 rounded-md hover:bg-cyan-600">Add to Cart</button>
+                        </div>
+                    </div>
+                    <!-- Add more bag products as needed -->
                 </div>
             </div>
+
             <div class="mb-12">
-                <h2 class="text-2xl font-bold mb-4">Mugs</h2>
-                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
-                    <div class="bg-gray-200 h-48 rounded-lg"></div>
-                    <div class="bg-gray-200 h-48 rounded-lg"></div>
-                    <div class="bg-gray-200 h-48 rounded-lg"></div>
-                    <div class="bg-gray-200 h-48 rounded-lg"></div>
+                <h2 class="text-2xl font-bold mb-6">Mugs</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10">
+                    <!-- Product 1 -->
+                    <div class="group relative border rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300">
+                        <div class="aspect-w-1 aspect-h-1 w-full bg-gray-200">
+                             <img src="https://placehold.co/400x400/fbbf24/ffffff?text=Mug+1" alt="Yellow coffee mug." class="w-full h-full object-cover object-center group-hover:opacity-80 transition-opacity">
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-sm text-gray-700 font-medium">
+                                <a href="#"><span aria-hidden="true" class="absolute inset-0"></span>Classic Ceramic Mug</a>
+                            </h3>
+                            <p class="text-lg font-semibold text-gray-900 mt-1">$15.00</p>
+                        </div>
+                         <div class="absolute bottom-0 left-0 right-0 p-4 bg-white/90 backdrop-blur-sm translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out">
+                            <button class="w-full bg-cyan-500 text-white text-sm font-semibold py-2 rounded-md hover:bg-cyan-600">Add to Cart</button>
+                        </div>
+                    </div>
+                    <!-- Add more mug products as needed -->
                 </div>
             </div>
+            
             <div class="mb-12">
-                <h2 class="text-2xl font-bold mb-4">T-Shirt</h2>
-                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
-                     <div class="bg-gray-200 h-48 rounded-lg"></div>
-                    <div class="bg-gray-200 h-48 rounded-lg"></div>
-                    <div class="bg-gray-200 h-48 rounded-lg"></div>
-                    <div class="bg-gray-200 h-48 rounded-lg"></div>
-                    <div class="bg-gray-200 h-48 rounded-lg"></div>
-                    <div class="bg-gray-200 h-48 rounded-lg"></div>
+                <h2 class="text-2xl font-bold mb-6">T-Shirts</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10">
+                    <!-- Product 1 -->
+                    <div class="group relative border rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300">
+                        <div class="aspect-w-1 aspect-h-1 w-full bg-gray-200">
+                             <img src="https://placehold.co/400x400/f87171/ffffff?text=T-Shirt+1" alt="Red t-shirt." class="w-full h-full object-cover object-center group-hover:opacity-80 transition-opacity">
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-sm text-gray-700 font-medium">
+                                <a href="#"><span aria-hidden="true" class="absolute inset-0"></span>Vintage Graphic Tee</a>
+                            </h3>
+                            <p class="text-lg font-semibold text-gray-900 mt-1">$25.00</p>
+                        </div>
+                         <div class="absolute bottom-0 left-0 right-0 p-4 bg-white/90 backdrop-blur-sm translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out">
+                            <button class="w-full bg-cyan-500 text-white text-sm font-semibold py-2 rounded-md hover:bg-cyan-600">Add to Cart</button>
+                        </div>
+                    </div>
+                    <!-- Product 2 -->
+                    <div class="group relative border rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300">
+                        <div class="aspect-w-1 aspect-h-1 w-full bg-gray-200">
+                             <img src="https://placehold.co/400x400/a78bfa/ffffff?text=T-Shirt+2" alt="Purple t-shirt." class="w-full h-full object-cover object-center group-hover:opacity-80 transition-opacity">
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-sm text-gray-700 font-medium">
+                                <a href="#"><span aria-hidden="true" class="absolute inset-0"></span>Plain Cotton Tee</a>
+                            </h3>
+                            <p class="text-lg font-semibold text-gray-900 mt-1">$20.00</p>
+                        </div>
+                         <div class="absolute bottom-0 left-0 right-0 p-4 bg-white/90 backdrop-blur-sm translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out">
+                            <button class="w-full bg-cyan-500 text-white text-sm font-semibold py-2 rounded-md hover:bg-cyan-600">Add to Cart</button>
+                        </div>
+                    </div>
+                    <!-- Add more t-shirt products as needed -->
                 </div>
             </div>
-             <div class="mb-12">
-                <h2 class="text-2xl font-bold mb-4">Calendars</h2>
-                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
-                     <div class="bg-gray-200 h-48 rounded-lg"></div>
-                    <div class="bg-gray-200 h-48 rounded-lg"></div>
-                    <div class="bg-gray-200 h-48 rounded-lg"></div>
-                </div>
-            </div>
-            <div>
-                <h2 class="text-2xl font-bold mb-4">Canvas Prints</h2>
-                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
-                    <div class="bg-gray-200 h-48 rounded-lg"></div>
-                     <div class="bg-gray-200 h-48 rounded-lg"></div>
-                </div>
-            </div>
+
         </section>
 
         <!-- Contact Us Page -->
@@ -444,12 +492,13 @@
             // Scroll to the top of the page on navigation
             window.scrollTo(0, 0);
         }
-
-        // Initialize Lucide icons
-        lucide.createIcons();
         
-        // Ensure the home page is shown on initial load
+        // Ensure the DOM is fully loaded before running scripts
         document.addEventListener('DOMContentLoaded', () => {
+            // Initialize Lucide icons
+            lucide.createIcons();
+            
+            // Show the home page by default
             showPage('home', document.querySelector('.nav-link[href="#home"]'));
         });
 
