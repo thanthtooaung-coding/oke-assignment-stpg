@@ -46,7 +46,7 @@ A modern, responsive e-commerce website built with pure HTML, CSS, and JavaScrip
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/party-time-ecommerce.git
+   git clone https://github.com/thanthtooaung-coding/oke-assignment-stpg.git
    cd party-time-ecommerce
    ```
 
@@ -307,8 +307,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 If you have any questions or need help:
 
 - 📧 Email: support@partytime.com
-- 🐛 Issues: [GitHub Issues](https://github.com/yourusername/party-time-ecommerce/issues)
-- 💬 Discussions: [GitHub Discussions](https://github.com/yourusername/party-time-ecommerce/discussions)
+- 🐛 Issues: [GitHub Issues](https://github.com/thanthtooaung-coding/oke-assignment-stpg/issues)
+- 💬 Discussions: [GitHub Discussions](https://github.com/thanthtooaung-coding/oke-assignment-stpg/discussions)
 
 ---
 
