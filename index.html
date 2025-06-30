@@ -893,10 +893,10 @@
                     <span class="header-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
                     </span>
-                    <span class="header-icon" onclick="showPage('profile')">
+                    <span id="profile-icon" class="header-icon" onclick="showPage('profile')">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5.52 19c.64-2.2 1.84-3 3.22-3h6.52c1.38 0 2.58.8 3.22 3"/><circle cx="12" cy="10" r="3"/><circle cx="12" cy="12" r="10"/></svg>
                     </span>
-                    <button class="btn-login" onclick="showPage('signin')">Log In</button>
+                    <button id="login-nav-btn" class="btn-login" onclick="showPage('signin')">Log In</button>
                 </div>
             </div>
             <nav class="mobile-nav">
@@ -1562,14 +1562,14 @@
         <section id="signin-page" class="page hidden">
             <div class="auth-form-container">
                 <h2>SIGN IN</h2>
-                <form>
+                <form id="signin-form">
                     <div class="form-group">
                         <label for="signin-email">ENTER YOUR EMAIL</label>
-                        <input type="email" id="signin-email" class="form-input">
+                        <input type="email" id="signin-email" class="form-input" required>
                     </div>
                     <div class="form-group" style="margin-bottom: 1.5rem;">
                         <label for="signin-password">ENTER PASSWORD</label>
-                        <input type="password" id="signin-password" class="form-input">
+                        <input type="password" id="signin-password" class="form-input" required>
                     </div>
                     <button type="submit" class="btn-submit">Sign In</button>
                 </form>
@@ -1598,14 +1598,15 @@
                     <div class="profile-avatar"></div>
                 </div>
                 <div class="profile-body">
-                    <h3>Nickname</h3>
+                    <h3 id="profile-nickname">Nickname</h3>
+                    <p id="profile-email"></p>
                     <button class="btn-edit-profile">Edit Profile</button>
                     
                     <div class="profile-actions">
                         <button class="profile-action-btn">Account Information</button>
                         <button class="profile-action-btn">View Member</button>
                         <button class="profile-action-btn">Order History</button>
-                        <button class="profile-action-btn btn-logout">Log Out</button>
+                        <button id="logout-btn" class="profile-action-btn btn-logout">Log Out</button>
                     </div>
                 </div>
             </div>
@@ -1636,14 +1637,21 @@
     </footer>
 
     <script>
-        // --- JAVASCRIPT FOR PAGE NAVIGATION ---
-
         const pages = document.querySelectorAll('.page');
         const mainHeader = document.getElementById('main-header');
         const authHeader = document.getElementById('auth-header');
         const mainFooter = document.getElementById('main-footer');
         const contactFooter = document.getElementById('contact-footer');
         const navLinks = document.querySelectorAll('.nav-link');
+        
+        // --- AUTHENTICATION ELEMENTS ---
+        const loginNavBtn = document.getElementById('login-nav-btn');
+        const profileIcon = document.getElementById('profile-icon');
+        const signinForm = document.getElementById('signin-form');
+        const logoutBtn = document.getElementById('logout-btn');
+        const profileEmailDisplay = document.getElementById('profile-email');
+        const profileNicknameDisplay = document.getElementById('profile-nickname');
+
 
         function showPage(pageId, clickedLink) {
             pages.forEach(page => {
@@ -1658,8 +1666,12 @@
             const isAuthPage = pageId === 'signin' || pageId === 'signup' || pageId === 'profile';
             mainHeader.classList.toggle('hidden', isAuthPage);
             authHeader.classList.toggle('hidden', !isAuthPage);
-            mainFooter.classList.toggle('hidden', isAuthPage || pageId === 'contact');
-            contactFooter.classList.toggle('hidden', pageId !== 'contact');
+            
+            // Special footer logic
+            const isContactPage = pageId === 'contact';
+            mainFooter.classList.toggle('hidden', isAuthPage || isContactPage);
+            contactFooter.classList.toggle('hidden', !isContactPage);
+
 
             if (clickedLink) {
                  navLinks.forEach(link => {
@@ -1672,9 +1684,60 @@
             
             window.scrollTo(0, 0);
         }
+
+        // --- AUTHENTICATION LOGIC ---
+
+        function updateAuthState() {
+            const loggedInUserEmail = localStorage.getItem('loggedInUserEmail');
+
+            if (loggedInUserEmail) {
+                // User is logged in
+                loginNavBtn.classList.add('hidden');
+                profileEmailDisplay.textContent = loggedInUserEmail;
+                profileNicknameDisplay.textContent = loggedInUserEmail.split('@')[0]; // Simple nickname from email
+            } else {
+                // User is logged out
+                loginNavBtn.classList.remove('hidden');
+                profileEmailDisplay.textContent = '';
+                profileNicknameDisplay.textContent = 'Nickname';
+            }
+        }
+
+        function handleProfileClick() {
+            const loggedInUserEmail = localStorage.getItem('loggedInUserEmail');
+            if (loggedInUserEmail) {
+                showPage('profile');
+            } else {
+                showPage('signin');
+            }
+        }
+
+        profileIcon.addEventListener('click', handleProfileClick);
+
+        signinForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting traditionally
+            const emailInput = document.getElementById('signin-email');
+            const userEmail = emailInput.value;
+
+            if (userEmail) {
+                localStorage.setItem('loggedInUserEmail', userEmail);
+                updateAuthState();
+                showPage('profile');
+                emailInput.value = ''; // Clear input field
+                document.getElementById('signin-password').value = '';
+            }
+        });
+
+        logoutBtn.addEventListener('click', function() {
+            localStorage.removeItem('loggedInUserEmail');
+            updateAuthState();
+            showPage('home', document.querySelector('.nav-link[href="#home"]'));
+        });
         
+        // Initial setup on page load
         document.addEventListener('DOMContentLoaded', () => {
             showPage('home', document.querySelector('.nav-link[href="#home"]'));
+            updateAuthState(); // Check login status as soon as the page loads
         });
     </script>
 </body>
