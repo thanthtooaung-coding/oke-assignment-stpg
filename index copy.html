@@ -1,0 +1,1744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Print - E-commerce</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- Base & Reset --- */
+        :root {
+            --cyan-500: #06b6d4;
+            --cyan-600: #0891b2;
+            --orange-100: #ffedd5;
+            --orange-200: #fed7aa;
+            --orange-400: #fb923c;
+            --orange-500: #f97316;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-400: #9ca3af;
+            --gray-500: #6b7280;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+            --blue-100: #dbeafe;
+            --red-50: #fef2f2;
+            --red-500: #ef4444;
+            --black: #000;
+            --white: #fff;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--white);
+            color: var(--gray-800);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        h1, h2, h3, h4, h5, h6, p {
+            margin: 0;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button {
+            font-family: inherit;
+            border: none;
+            background: none;
+            cursor: pointer;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+        
+        input, textarea {
+            font-family: inherit;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* --- Layout --- */
+        .container {
+            max-width: 1280px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        /* --- GRID SYSTEM --- */
+        .grid {
+            display: grid;
+        }
+
+        .grid-cols-1 {
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+        }
+
+        /* Gap Classes */
+        .gap-4 {
+            gap: 1rem;
+        }
+
+        .gap-6 {
+            gap: 1.5rem;
+        }
+
+        .gap-8 {
+            gap: 2rem;
+        }
+
+        .gap-x-6 {
+            column-gap: 1.5rem;
+        }
+
+        .gap-y-10 {
+            row-gap: 2.5rem;
+        }
+
+        /* Alignment */
+        .items-center {
+            align-items: center;
+        }
+
+        /* Small screens (640px and up) */
+        @media (min-width: 640px) {
+            .grid-sm-2 {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        /* Medium screens (768px and up) */
+        @media (min-width: 768px) {
+            .grid-md-2 {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .grid-md-3 {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+
+        /* Large screens (1024px and up) */
+        @media (min-width: 1024px) {
+            .grid-lg-4 {
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+            }
+        }
+
+        /* --- Header --- */
+        .main-header {
+            border-bottom: 1px solid var(--gray-200);
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0;
+        }
+        .header-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            cursor: pointer;
+        }
+        .main-nav {
+            display: none; /* Hidden on mobile */
+        }
+        .main-nav a {
+            color: var(--gray-600);
+            padding-bottom: 0.25rem;
+            transition: color 0.2s ease;
+        }
+        .main-nav a:hover {
+            color: var(--black);
+        }
+        .main-nav a.active {
+            font-weight: 700;
+            border-bottom: 2px solid var(--black);
+            color: var(--black);
+        }
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .search-bar {
+            position: relative;
+            display: none; /* Hidden on mobile */
+        }
+        .search-input {
+            border: 1px solid var(--gray-300);
+            border-radius: 9999px;
+            padding: 0.375rem 1rem;
+            font-size: 0.875rem;
+            width: 10rem;
+            outline: none;
+            transition: box-shadow 0.2s ease;
+        }
+        .search-input:focus {
+            box-shadow: 0 0 0 2px var(--gray-300);
+        }
+        .search-icon {
+            position: absolute;
+            top: 50%;
+            right: 0.75rem;
+            transform: translateY(-50%);
+            width: 1rem;
+            height: 1rem;
+            color: var(--gray-400);
+            pointer-events: none;
+        }
+        .header-icon {
+            width: 1.5rem;
+            height: 1.5rem;
+            color: var(--gray-600);
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+        .header-icon:hover {
+            color: var(--gray-800);
+        }
+        .btn-login {
+            background-color: var(--cyan-500);
+            color: var(--white);
+            font-size: 0.875rem;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.2s ease;
+        }
+        .btn-login:hover {
+            background-color: var(--cyan-600);
+        }
+        .mobile-nav {
+            padding-bottom: 0.75rem;
+        }
+        .mobile-nav a {
+            display: block;
+            padding: 0.25rem 0;
+            text-align: center;
+            color: var(--gray-600);
+            transition: color 0.2s ease;
+        }
+        .mobile-nav a:hover {
+            color: var(--black);
+        }
+        
+        .auth-header {
+            border-bottom: 1px solid var(--gray-200);
+            padding: 0.75rem 0;
+        }
+        .auth-header .header-title {
+            text-align: center;
+        }
+
+        /* --- Main Content --- */
+        main {
+            padding: 2rem 0;
+        }
+        
+        .page-title {
+            font-size: 1.875rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        h2.section-title {
+            font-size: 1.875rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+        
+        h3.section-subtitle {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        /* --- Home Page --- */
+        .promo-banner {
+            background-color: var(--blue-100);
+            text-align: center;
+            padding: 0.75rem;
+            margin-bottom: 2rem;
+            border-radius: 0.5rem;
+        }
+        .promo-banner a {
+            font-weight: 700;
+            text-decoration: underline;
+            margin-left: 0.5rem;
+            color: var(--cyan-600);
+        }
+        .promo-banner a:hover {
+            color: var(--cyan-700);
+        }
+        .hero-section h2 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .hero-section .btn-dark {
+            background-color: var(--black);
+            color: var(--white);
+            padding: 0.5rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: background-color 0.2s ease;
+        }
+        .hero-section .btn-dark:hover {
+            background-color: var(--gray-800);
+        }
+        .placeholder-img-lg {
+            background-color: var(--gray-200);
+            width: 100%;
+            height: 16rem; /* 256px */
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+        .placeholder-img-lg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 0.5rem;
+        }
+        .latest-item .shop-now-link {
+            font-weight: 600;
+            text-decoration: underline;
+            transition: text-decoration 0.2s ease;
+        }
+        .latest-item:hover .shop-now-link {
+            text-decoration: none;
+        }
+        .featured-item {
+            text-align: center;
+        }
+        .featured-item .placeholder-img-tall {
+             background-color: var(--gray-200);
+             width: 100%;
+             height: 20rem; /* 320px */
+             border-radius: 0.5rem;
+             margin-bottom: 0.5rem;
+             overflow: hidden;
+        }
+        .featured-item .placeholder-img-tall img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .featured-item p {
+            font-weight: 600;
+        }
+        
+        /* --- Packages Page --- */
+        .membership-card {
+            border: 1px solid var(--gray-300);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            text-align: center;
+            transition: box-shadow 0.3s ease;
+        }
+        .membership-card:hover {
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+        }
+        .membership-card .placeholder-img-md {
+            background-color: var(--gray-200);
+            width: 100%;
+            height: 10rem; /* 160px */
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+        .membership-card .placeholder-img-md img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .membership-card h3 { 
+            font-size: 1.25rem; 
+            font-weight: 700; 
+        }
+        .membership-card .description { 
+            color: var(--gray-500); 
+            margin: 0.5rem 0; 
+            font-size: 0.875rem; 
+        }
+        .membership-card .price { 
+            font-weight: 700; 
+            font-size: 1.125rem; 
+            margin-bottom: 1rem; 
+        }
+        .btn-buy {
+            background-color: var(--cyan-500);
+            color: var(--white);
+            width: 100%;
+            padding: 0.5rem 0;
+            border-radius: 0.5rem;
+            transition: background-color 0.2s ease;
+        }
+        .btn-buy:hover { 
+            background-color: var(--cyan-600); 
+        }
+        .discount-card { 
+            border-radius: 0.5rem; 
+            padding: 1.5rem; 
+        }
+        .discount-card h3 { 
+            font-size: 1.25rem; 
+            font-weight: 700; 
+            margin-bottom: 0.5rem; 
+        }
+        .discount-card p { 
+            margin-bottom: 1rem; 
+        }
+        .discount-card.light { 
+            background-color: var(--gray-100); 
+        }
+        .discount-card.dark { 
+            background-color: var(--gray-700); 
+            color: var(--white); 
+        }
+        .discount-card.dark p { 
+            color: var(--gray-300); 
+        }
+        .btn-claim {
+            background-color: var(--cyan-500);
+            color: var(--white);
+            padding: 0.5rem 1.5rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.2s ease;
+        }
+        .btn-claim:hover { 
+            background-color: var(--cyan-600); 
+        }
+
+        /* --- Products Page --- */
+        .product-card {
+            position: relative;
+            border: 1px solid var(--gray-200);
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1), 0 1px 2px 0 rgba(0,0,0,0.06);
+            transition: box-shadow 0.3s ease;
+        }
+        .product-card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+        }
+        .product-image-container {
+            width: 100%;
+            padding-top: 100%; /* 1:1 Aspect Ratio */
+            position: relative;
+            background-color: var(--gray-200);
+        }
+        .product-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.3s ease;
+        }
+        .product-card:hover .product-image {
+            opacity: 0.8;
+        }
+        .product-info {
+            padding: 1rem;
+        }
+        .product-info h3 { 
+            font-size: 0.875rem; 
+            color: var(--gray-700); 
+            font-weight: 500; 
+        }
+        .product-info a { 
+            position: absolute; 
+            inset: 0; 
+        }
+        .product-price { 
+            font-size: 1.125rem; 
+            font-weight: 600; 
+            color: var(--gray-900); 
+            margin-top: 0.25rem; 
+        }
+        .add-to-cart-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(4px);
+            transform: translateY(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        .product-card:hover .add-to-cart-overlay {
+            transform: translateY(0);
+        }
+        .btn-add-to-cart {
+            width: 100%;
+            background-color: var(--cyan-500);
+            color: var(--white);
+            font-size: 0.875rem;
+            font-weight: 600;
+            padding: 0.5rem;
+            border-radius: 0.375rem;
+            transition: background-color 0.2s ease;
+        }
+        .btn-add-to-cart:hover { 
+            background-color: var(--cyan-600); 
+        }
+
+        /* --- Contact Page --- */
+        .contact-page-content p { 
+            color: var(--gray-600); 
+            line-height: 1.6; 
+            margin-bottom: 3rem; 
+        }
+        .team-intro-title { 
+            font-size: 1.875rem; 
+            font-weight: 700; 
+            text-align: center; 
+            margin-bottom: 1.5rem; 
+        }
+        .team-grid { 
+            margin-bottom: 3rem; 
+        }
+        .team-member { 
+            text-align: center; 
+        }
+        .team-member .placeholder-img-sq {
+            background-color: var(--gray-200);
+            width: 10rem;
+            height: 10rem;
+            border-radius: 0.5rem;
+            margin: 0 auto 1rem;
+        }
+        .team-member p { 
+            color: var(--gray-600); 
+        }
+        .contact-form-wrapper {
+            max-width: 42rem;
+            margin: 0 auto;
+            border: 1px solid var(--gray-200);
+            border-radius: 0.5rem;
+            padding: 2rem;
+        }
+        .form-grid { 
+            display: grid; 
+            gap: 1.5rem; 
+            margin-bottom: 1rem; 
+        }
+        .form-group label { 
+            display: block; 
+            font-size: 0.875rem; 
+            font-weight: 500; 
+            color: var(--gray-700); 
+            margin-bottom: 0.25rem; 
+        }
+        .form-input, .form-textarea {
+            width: 100%;
+            border: 1px solid var(--gray-300);
+            border-radius: 0.375rem;
+            box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
+            outline: none;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        .form-input { 
+            padding: 0.5rem 0.75rem; 
+        }
+        .form-textarea { 
+            padding: 0.5rem 0.75rem; 
+            resize: vertical; 
+        }
+        .form-input:focus, .form-textarea:focus { 
+            border-color: var(--cyan-500); 
+            box-shadow: 0 0 0 1px var(--cyan-500); 
+        }
+        .form-hint { 
+            font-size: 0.75rem; 
+            color: var(--gray-500); 
+            margin-bottom: 1rem; 
+        }
+        
+        /* --- Auth Pages (Sign In/Up) --- */
+        .auth-form-container {
+            max-width: 28rem;
+            margin: 0 auto;
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+            border: 1px solid var(--gray-200);
+        }
+        .auth-form-container h2 { 
+            text-align: center; 
+            font-size: 1.875rem; 
+            font-weight: 700; 
+            margin-bottom: 1.5rem; 
+        }
+        .auth-form-container .form-input { 
+            border-width: 2px; 
+            border-color: var(--gray-400); 
+        }
+        .auth-form-container .form-group { 
+            margin-bottom: 1rem; 
+        }
+        .terms-group { 
+            display: flex; 
+            align-items: center; 
+            margin-bottom: 1.5rem; 
+        }
+        .terms-group input { 
+            height: 1rem; 
+            width: 1rem; 
+            border-radius: 0.25rem; 
+        }
+        .terms-group label { 
+            margin-left: 0.5rem; 
+            font-size: 0.875rem; 
+            color: var(--gray-600); 
+        }
+        .terms-group a { 
+            color: var(--cyan-600); 
+            font-weight: 600; 
+        }
+        .terms-group a:hover { 
+            text-decoration: underline; 
+        }
+        .btn-submit {
+            width: 100%;
+            background-color: var(--black);
+            color: var(--white);
+            font-weight: 700;
+            padding: 0.75rem 0;
+            border-radius: 0.5rem;
+            transition: background-color 0.2s ease;
+        }
+        .btn-submit:hover { 
+            background-color: var(--gray-800); 
+        }
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 1.5rem 0;
+        }
+        .divider-line {
+            flex-grow: 1;
+            border-top: 1px solid var(--gray-300);
+        }
+        .divider-text {
+            padding: 0 1rem;
+            font-size: 0.875rem;
+            color: var(--gray-500);
+        }
+        .social-signup { 
+            display: flex; 
+            justify-content: center; 
+            gap: 1rem; 
+            margin-bottom: 1.5rem; 
+        }
+        .social-btn {
+            width: 3rem;
+            height: 3rem;
+            border-width: 2px;
+            border-style: solid;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            transition: background-color 0.2s ease;
+        }
+        .social-btn-f { 
+            border-color: var(--cyan-500); 
+            color: var(--cyan-500); 
+        }
+        .social-btn-f:hover {
+            background-color: #ecfeff;
+        }
+        .social-btn-g { 
+            border-color: #fbbf24; 
+            color: #fbbf24; 
+        }
+        .social-btn-g:hover {
+            background-color: #fef3c7;
+        }
+        .social-btn-l { 
+            border-color: #4ade80; 
+            color: #4ade80; 
+        }
+        .social-btn-l:hover {
+            background-color: #dcfce7;
+        }
+        .auth-redirect { 
+            text-align: center; 
+            font-size: 0.875rem; 
+        }
+        .auth-redirect a { 
+            font-weight: 700; 
+        }
+        .auth-redirect a:hover { 
+            text-decoration: underline; 
+        }
+        
+        /* --- Profile Page --- */
+        .profile-card {
+            max-width: 24rem;
+            margin: 0 auto;
+            background-color: var(--orange-100);
+            padding: 2rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+            border: 1px solid var(--orange-200);
+        }
+        .profile-header { 
+            position: relative; 
+            margin-bottom: 1rem; 
+        }
+        .profile-banner { 
+            height: 6rem; 
+            width: 12rem; 
+            background-color: var(--white); 
+            border-top-left-radius: 0.5rem; 
+            border-top-right-radius: 0.5rem; 
+            margin: 0 auto; 
+        }
+        .profile-avatar {
+            position: absolute;
+            top: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 6rem;
+            height: 6rem;
+            background-color: var(--white);
+            border-radius: 9999px;
+            border: 4px solid var(--orange-100);
+        }
+        .profile-body { 
+            text-align: center; 
+            padding-top: 2rem; 
+        }
+        .profile-body h3 { 
+            font-weight: 700; 
+            font-size: 1.25rem; 
+            margin-bottom: 0.5rem; 
+        }
+        .btn-edit-profile {
+            background-color: var(--white);
+            color: var(--orange-500);
+            border: 1px solid var(--orange-500);
+            padding: 0.25rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            transition: background-color 0.2s ease;
+        }
+        .btn-edit-profile:hover { 
+            background-color: #fff7ed; 
+        }
+        .profile-actions { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 0.75rem; 
+        }
+        .profile-action-btn {
+            width: 100%;
+            background-color: var(--white);
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            text-align: left;
+            font-weight: 600;
+            border: 1px solid var(--gray-200);
+            transition: background-color 0.2s ease;
+        }
+        .profile-action-btn:hover { 
+            background-color: var(--gray-100); 
+        }
+        .btn-logout { 
+            border-color: var(--red-500); 
+            color: var(--red-500); 
+        }
+        .btn-logout:hover { 
+            background-color: var(--red-50); 
+        }
+
+        /* --- Footer --- */
+        .main-footer {
+            border-top: 1px solid var(--gray-200);
+            margin-top: 3rem;
+            padding: 2rem 0;
+        }
+        .main-footer .footer-content { 
+            display: grid; 
+            gap: 2rem; 
+            align-items: center; 
+        }
+        .footer-about h4 { 
+            font-weight: 700; 
+            font-size: 1.125rem; 
+        }
+        .footer-about p { 
+            color: var(--gray-500); 
+        }
+        .footer-buttons { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 1rem; 
+        }
+        .btn-footer { 
+            padding: 0.75rem; 
+            font-weight: 600; 
+            border-radius: 0.5rem; 
+            flex: 1; 
+            transition: background-color 0.2s ease;
+        }
+        .btn-footer.primary { 
+            background-color: var(--cyan-500); 
+            color: var(--white); 
+        }
+        .btn-footer.primary:hover { 
+            background-color: var(--cyan-600); 
+        }
+        .btn-footer.secondary { 
+            border: 2px solid var(--cyan-500); 
+            color: var(--cyan-500); 
+        }
+        .btn-footer.secondary:hover { 
+            background-color: #ecfeff; 
+        }
+
+        .contact-footer {
+            background-color: var(--orange-400);
+            color: var(--white);
+            margin-top: 3rem;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        .contact-footer h3 { 
+            font-size: 1.5rem; 
+            font-weight: 700; 
+            margin-bottom: 0.5rem; 
+        }
+
+        /* --- Responsive Design --- */
+        @media (min-width: 640px) { /* sm */
+            .search-bar { 
+                display: block; 
+            }
+            .footer-buttons { 
+                flex-direction: row; 
+            }
+        }
+
+        @media (min-width: 768px) { /* md */
+            .main-nav { 
+                display: flex; 
+                align-items: center; 
+                gap: 1.5rem; 
+            }
+            .mobile-nav { 
+                display: none; 
+            }
+            .auth-header .header-title { 
+                text-align: left; 
+            }
+            .main-footer .footer-content { 
+                grid-template-columns: repeat(2, minmax(0, 1fr)); 
+            }
+            .placeholder-img-lg { 
+                height: 20rem; 
+            }
+            .form-grid.grid-md-2 {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="main-header" class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="header-title" onclick="showPage('home', document.querySelector('.nav-link[href=\'#home\']'))">Paper Print</h1>
+                <nav class="main-nav">
+                    <a href="#home" class="nav-link active" onclick="showPage('home', this)">Home</a>
+                    <a href="#packages" class="nav-link" onclick="showPage('packages', this)">Packages & Discounts</a>
+                    <a href="#products" class="nav-link" onclick="showPage('products', this)">Services & Products</a>
+                    <a href="#contact" class="nav-link" onclick="showPage('contact', this)">Contact Us</a>
+                </nav>
+                <div class="header-actions">
+                    <div class="search-bar">
+                        <input type="text" placeholder="Search" class="search-input">
+                        <span class="search-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                        </span>
+                    </div>
+                    <span class="header-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                    </span>
+                    <span id="profile-icon" class="header-icon" onclick="showPage('profile')">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5.52 19c.64-2.2 1.84-3 3.22-3h6.52c1.38 0 2.58.8 3.22 3"/><circle cx="12" cy="10" r="3"/><circle cx="12" cy="12" r="10"/></svg>
+                    </span>
+                    <button id="login-nav-btn" class="btn-login" onclick="showPage('signin')">Log In</button>
+                </div>
+            </div>
+            <nav class="mobile-nav">
+                <a href="#home" class="nav-link" onclick="showPage('home', this)">Home</a>
+                <a href="#packages" class="nav-link" onclick="showPage('packages', this)">Packages & Discounts</a>
+                <a href="#products" class="nav-link" onclick="showPage('products', this)">Services & Products</a>
+                <a href="#contact" class="nav-link" onclick="showPage('contact', this)">Contact Us</a>
+            </nav>
+        </div>
+    </header>
+
+    <header id="auth-header" class="auth-header hidden">
+        <div class="container">
+            <h1 class="header-title" onclick="showPage('home', document.querySelector('.nav-link[href=\'#home\']'))">Paper Print</h1>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="home-page" class="page">
+            <div class="promo-banner">
+                <p>New Member Get 15% Off <a href="#">Learn More</a></p>
+            </div>
+
+            <div class="grid grid-md-2 gap-8 items-center hero-section" style="margin-bottom: 3rem;">
+                <div>
+                    <h2>Breaking &</h2>
+                    <h2>Faith Wile Collection</h2>
+                    <button class="btn-dark">Shop Now</button>
+                </div>
+                <div class="placeholder-img-lg">
+                    <img src="b&f1.jpg" alt="Placeholder Image">
+                </div>
+            </div>
+
+            <h3 class="section-subtitle">The Latest</h3>
+            <div class="grid grid-md-2 gap-8" style="margin-bottom: 3rem;">
+                <div class="latest-item">
+                    <div class="placeholder-img-lg" style="margin-bottom: 0.5rem;"><img src="b&f2.jpg" alt="Placeholder Image"></div>
+                    <a href="#" class="shop-now-link">Shop Now</a>
+                </div>
+                <div class="latest-item">
+                    <div class="placeholder-img-lg" style="margin-bottom: 0.5rem;"><img src="b&f3.jpg" alt="Placeholder Image"></div>
+                    <a href="#" class="shop-now-link">Shop Now</a>
+                </div>
+            </div>
+
+            <h3 class="section-subtitle">Featured</h3>
+            <div class="grid grid-sm-2 grid-md-3 gap-8">
+                <div class="featured-item">
+                    <div class="placeholder-img-tall"><img src="summer.jpg" alt="Placeholder Image"></div>
+                    <p>Cool For Summer</p>
+                </div>
+                <div class="featured-item">
+                    <div class="placeholder-img-tall"><img src="luxury.jpg" alt="Placeholder Image"></div>
+                    <p>Luxury Vibe</p>
+                </div>
+                <div class="featured-item">
+                    <div class="placeholder-img-tall"><img src="kids.jpg" alt="Placeholder Image"></div>
+                    <p>For Kids</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="packages-page" class="page hidden">
+            <h2 class="page-title">Membership</h2>
+            <div class="grid grid-md-3 gap-8" style="margin-bottom: 4rem;">
+                <div class="membership-card">
+                     <div class="placeholder-img-md"><img src="bronze.png" alt="Placeholder Image"></div>
+                    <h3>Bronze Member</h3>
+                    <p class="description">Access Member Only Sales and Basic Customer Support.</p>
+                    <p class="price">Monthly Fee - $9.99</p>
+                    <button class="btn-buy">Click to Buy</button>
+                </div>
+                <div class="membership-card">
+                     <div class="placeholder-img-md"><img src="silver.png" alt="Placeholder Image"></div>
+                    <h3>Silver Member</h3>
+                    <p class="description">Access Member Only Sales, Birthday Discount, and Basic Customer Support.</p>
+                     <p class="price">Monthly Fee - $19.99</p>
+                    <button class="btn-buy">Click to Buy</button>
+                </div>
+                <div class="membership-card">
+                     <div class="placeholder-img-md"><img src="gold.png" alt="Placeholder Image"></div>
+                    <h3>Gold Member</h3>
+                    <p class="description">All Silver benefits, plus Free Shipping and Priority Customer Support.</p>
+                     <p class="price">Monthly Fee - $29.99</p>
+                    <button class="btn-buy">Click to Buy</button>
+                </div>
+            </div>
+
+            <h2 class="page-title">DISCOUNTS</h2>
+             <div class="grid grid-md-2 gap-8">
+                <div class="discount-card light">
+                    <h3>First-Time Visitor Discounts</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <button class="btn-claim">Claim 20% Discount</button>
+                </div>
+                 <div class="discount-card dark">
+                    <h3>Sign Up Bonus</h3>
+                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <button class="btn-claim" onclick="showPage('signup')">Sign Up & Save 15%</button>
+                </div>
+                 <div class="discount-card dark">
+                    <h3>Referral Program</h3>
+                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                    <button class="btn-claim">Refer Friend & Save 25%</button>
+                </div>
+                <div class="discount-card light">
+                    <h3>Social Media Special</h3>
+                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <button class="btn-claim">Follow & Save 20%</button>
+                </div>
+            </div>
+            
+            <h2 class="page-title" style="margin-top: 4rem;">Packages</h2>
+            <div class="grid grid-cols-1 gap-y-10">
+        
+                <div class="grid grid-md-2 gap-8 items-center">
+                    <div>
+                        <h3 class="section-subtitle" style="margin-bottom: 1rem; text-align: left;">Party Package</h3>
+                        <div style="color: var(--gray-600); margin-bottom: 1.5rem; text-align: left;">
+                            <p>Personalized photo props (x20)</p>
+                            <p>Customized cupcake toppers (x12)</p>
+                            <p>Themed banner (6ft)</p>
+                            <p>Printable invitations (digital file)</p>
+                        </div>
+                        <button class="btn-claim">Select Package</button>
+                    </div>
+                    <div class="placeholder-img-lg"><img src="party.png" alt="Party Package Image"></div>
+                </div>
+        
+                <div class="grid grid-md-2 gap-8 items-center">
+                     <div>
+                        <h3 class="section-subtitle" style="margin-bottom: 1rem; text-align: left;">Clothing Package</h3>
+                        <div style="color: var(--gray-600); margin-bottom: 1.5rem; text-align: left;">
+                            <p>1 Hoodie (custom design)</p>
+                            <p>2 T-shirts (your color choice)</p>
+                            <p>1 Tote Bag</p>
+                            <p>3 iron-on transfers</p>
+                        </div>
+                        <button class="btn-claim">Select Package</button>
+                    </div>
+                    <div class="placeholder-img-lg"><img src="clothing.jpg" alt="Clothing Package Image"></div>
+                </div>
+        
+                <div class="grid grid-md-2 gap-8 items-center">
+                    <div>
+                        <h3 class="section-subtitle" style="margin-bottom: 1rem; text-align: left;">Office Package</h3>
+                         <div style="color: var(--gray-600); margin-bottom: 1.5rem; text-align: left;">
+                            <p>1 Personalized notebook</p>
+                            <p>1 Custom notepad (lined or grid)</p>
+                            <p>50 Business cards (premium)</p>
+                            <p>1 sheet of logo/design printing</p>
+                        </div>
+                        <button class="btn-claim">Select Package</button>
+                    </div>
+                    <div class="placeholder-img-lg"><img src="office.jpg" alt="Office Package Image"></div>
+                </div>
+        
+            </div>
+        </section>
+
+        <section id="products-page" class="page hidden">
+            <h2 class="page-title">Services & Products</h2>
+
+            <div style="margin-bottom: 3rem;">
+                <h2 class="section-title">Bags</h2>
+                <div class="grid grid-sm-2 grid-md-3 grid-lg-4 gap-x-6 gap-y-10">
+                    <div class="product-card">
+                        <div class="product-image-container">
+                            <img src="bag1.jpg" alt="Placeholder Bag Image" class="product-image">
+                        </div>
+                        <div class="product-info">
+                            <h3><a href="#">REUSABLE BAG</a></h3>
+                            <p class="product-price">$30.00</p>
+                        </div>
+                        <div class="add-to-cart-overlay">
+                            <button class="btn-add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image-container">
+                            <img src="bag2.jpg" alt="Placeholder Bag Image" class="product-image">
+                        </div>
+                        <div class="product-info">
+                            <h3><a href="#">Sansa Tote Bag</a></h3>
+                            <p class="product-price">$45.00</p>
+                        </div>
+                        <div class="add-to-cart-overlay">
+                            <button class="btn-add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image-container">
+                            <img src="bag3.jpg" alt="Placeholder Bag Image" class="product-image">
+                        </div>
+                        <div class="product-info">
+                            <h3><a href="#">Backpack</a></h3>
+                            <p class="product-price">$70.00</p>
+                        </div>
+                        <div class="add-to-cart-overlay">
+                            <button class="btn-add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image-container">
+                            <img src="bag4.jpg" alt="Placeholder Bag Image" class="product-image">
+                        </div>
+                        <div class="product-info">
+                            <h3><a href="#">The Grooming Bag</a></h3>
+                            <p class="product-price">$45.99</p>
+                        </div>
+                        <div class="add-to-cart-overlay">
+                            <button class="btn-add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image-container">
+                            <img src="bag5.jpg" alt="Placeholder Bag Image" class="product-image">
+                        </div>
+                        <div class="product-info">
+                            <h3><a href="#">2WAY UTILITY BAG</a></h3>
+                            <p class="product-price">$36.99</p>
+                        </div>
+                        <div class="add-to-cart-overlay">
+                            <button class="btn-add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image-container">
+                            <img src="bag6.jpg" alt="Placeholder Bag Image" class="product-image">
+                        </div>
+                        <div class="product-info">
+                            <h3><a href="#">Skechers BAG</a></h3>
+                            <p class="product-price">$30.00</p>
+                        </div>
+                        <div class="add-to-cart-overlay">
+                            <button class="btn-add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                    </div>
+            </div>
+
+            <div style="margin-bottom: 3rem;">
+                <h2 class="section-title">Mugs</h2>
+                <div class="grid grid-sm-2 grid-md-3 grid-lg-4 gap-x-6 gap-y-10">
+                    <div class="product-card">
+                        <div class="product-image-container">
+                            <img src="mug.jpg" alt="Placeholder Mug Image" class="product-image">
+                        </div>
+                        <div class="product-info">
+                            <h3><a href="#">HELLO' Coffee Mug</a></h3>
+                            <p class="product-price">$5.00</p>
+                        </div>
+                        <div class="add-to-cart-overlay">
+                            <button class="btn-add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image-container">
+                            <img src="mug1.jpg" alt="Placeholder Mug Image" class="product-image">
+                        </div>
+                        <div class="product-info">
+                            <h3><a href="#">Ramakien Mug</a></h3>
+                            <p class="product-price">$10.00</p>
+                        </div>
+                        <div class="add-to-cart-overlay">
+                            <button class="btn-add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image-container">
+                            <img src="mug2.jpg" alt="Placeholder Mug Image" class="product-image">
+                        </div>
+                        <div class="product-info">
+                            <h3><a href="#">Toka Mug</a></h3>
+                            <p class="product-price">$10.00</p>
+                        </div>
+                        <div class="add-to-cart-overlay">
+                            <button class="btn-add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image-container">
+                            <img src="mug3.jpg" alt="Placeholder Mug Image" class="product-image">
+                        </div>
+                        <div class="product-info">
+                            <h3><a href="#">Cast Tan Coffee Mug</a></h3>
+                            <p class="product-price">$8.00</p>
+                        </div>
+                        <div class="add-to-cart-overlay">
+                            <button class="btn-add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image-container">
+                            <img src="mug4.jpg" alt="Placeholder Mug Image" class="product-image">
+                        </div>
+                        <div class="product-info">
+                            <h3><a href="#">Pink Flower Textured Mug</a></h3>
+                            <p class="product-price">$7 .00</p>
+                        </div>
+                        <div class="add-to-cart-overlay">
+                            <button class="btn-add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image-container">
+                            <img src="mug5.jpg" alt="Placeholder Mug Image" class="product-image">
+                        </div>
+                        <div class="product-info">
+                            <h3><a href="#">Printed Mug</a></h3>
+                            <p class="product-price">$5.00</p>
+                        </div>
+                        <div class="add-to-cart-overlay">
+                            <button class="btn-add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                    </div>
+            </div>
+
+            <div style="margin-bottom: 3rem;">
+                <h2 class="section-title">T-Shirts</h2>
+                <div class="grid grid-sm-2 grid-md-3 grid-lg-4 gap-x-6 gap-y-10">
+                    <div class="product-card">
+                        <div class="product-image-container">
+                            <img src="tshirt.jpg" alt="Placeholder T-Shirt Image" class="product-image">
+                        </div>
+                        <div class="product-info">
+                            <h3><a href="#">Oversized Fit Cotton T-shirt</a></h3>
+                            <p class="product-price">$20.00</p>
+                        </div>
+                        <div class="add-to-cart-overlay">
+                            <button class="btn-add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image-container">
+                            <img src="tshirt1.jpg" alt="Placeholder T-Shirt Image" class="product-image">
+                        </div>
+                        <div class="product-info">
+                            <h3><a href="#">BOSTON- Oversized T-Shirt</a></h3>
+                            <p class="product-price">$14.99</p>
+                        </div>
+                        <div class="add-to-cart-overlay">
+                            <button class="btn-add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image-container">
+                            <img src="tshirt2.jpg" alt="Placeholder T-Shirt Image" class="product-image">
+                        </div>
+                        <div class="product-info">
+                            <h3><a href="#">Custom T Shirt Printing</a></h3>
+                            <p class="product-price">$14.99</p>
+                        </div>
+                        <div class="add-to-cart-overlay">
+                            <button class="btn-add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image-container">
+                            <img src="tshirt3.jpg" alt="Placeholder T-Shirt Image" class="product-image">
+                        </div>
+                        <div class="product-info">
+                            <h3><a href="#">AIRism Cotton Oversized Crew Neck T-Shirt</a></h3>
+                            <p class="product-price">$16.99</p>
+                        </div>
+                        <div class="add-to-cart-overlay">
+                            <button class="btn-add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image-container">
+                            <img src="tshirt4.jpg" alt="Placeholder T-Shirt Image" class="product-image">
+                        </div>
+                        <div class="product-info">
+                            <h3><a href="#">PERFECT T-SHIRT</a></h3>
+                            <p class="product-price">$13.99</p>
+                        </div>
+                        <div class="add-to-cart-overlay">
+                            <button class="btn-add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image-container">
+                            <img src="tshirt5.jpg" alt="Placeholder T-Shirt Image" class="product-image">
+                        </div>
+                        <div class="product-info">
+                            <h3><a href="#">Starter Print T-shirt </a></h3>
+                            <p class="product-price">$13.99</p>
+                        </div>
+                        <div class="add-to-cart-overlay">
+                            <button class="btn-add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                    </div>
+            </div>
+
+            <div style="margin-bottom: 3rem;">
+                <h2 class="section-title">Calendars</h2>
+                <div class="grid grid-sm-2 grid-md-3 grid-lg-4 gap-x-6 gap-y-10">
+                    <div class="product-card">
+                        <div class="product-image-container">
+                            <img src="calendar.jpg" alt="Placeholder Calendar Image" class="product-image">
+                        </div>
+                        <div class="product-info">
+                            <h3><a href="#">Wall Calendar</a></h3>
+                            <p class="product-price">$1.99</p>
+                        </div>
+                        <div class="add-to-cart-overlay">
+                            <button class="btn-add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image-container">
+                            <img src="calendar1.jpg" alt="Placeholder Calendar Image" class="product-image">
+                        </div>
+                        <div class="product-info">
+                            <h3><a href="#">Simple Desk Calendar</a></h3>
+                            <p class="product-price">$1.99</p>
+                        </div>
+                        <div class="add-to-cart-overlay">
+                            <button class="btn-add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image-container">
+                            <img src="calendar2.jpg" alt="Placeholder Calendar Image" class="product-image">
+                        </div>
+                        <div class="product-info">
+                            <h3><a href="#">Multipurpose Wall calendar</a></h3>
+                            <p class="product-price">$1.99</p>
+                        </div>
+                        <div class="add-to-cart-overlay">
+                            <button class="btn-add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image-container">
+                            <img src="calendar3.jpg" alt="Placeholder Calendar Image" class="product-image">
+                        </div>
+                        <div class="product-info">
+                            <h3><a href="#">Vector calendar</a></h3>
+                            <p class="product-price">$1.99</p>
+                        </div>
+                        <div class="add-to-cart-overlay">
+                            <button class="btn-add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image-container">
+                            <img src="calendar4.jpg" alt="Placeholder Calendar Image" class="product-image">
+                        </div>
+                        <div class="product-info">
+                            <h3><a href="#">Creative calendar</a></h3>
+                            <p class="product-price">$1.99</p>
+                        </div>
+                        <div class="add-to-cart-overlay">
+                            <button class="btn-add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image-container">
+                            <img src="calendar5.jpg" alt="Placeholder Calendar Image" class="product-image">
+                        </div>
+                        <div class="product-info">
+                            <h3><a href="#">Monthly Calendar</a></h3>
+                            <p class="product-price">$1.99</p>
+                        </div>
+                        <div class="add-to-cart-overlay">
+                            <button class="btn-add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                    </div>
+            </div>
+
+            <div style="margin-bottom: 3rem;">
+                <h2 class="section-title">Canvas Prints</h2>
+                <div class="grid grid-sm-2 grid-md-3 grid-lg-4 gap-x-6 gap-y-10">
+                    <div class="product-card">
+                        <div class="product-image-container">
+                            <img src="canvas.jpg" alt="Placeholder Canvas Print Image" class="product-image">
+                        </div>
+                        <div class="product-info">
+                            <h3><a href="#">Classic Canvas Prints</a></h3>
+                            <p class="product-price">$3.99</p>
+                        </div>
+                        <div class="add-to-cart-overlay">
+                            <button class="btn-add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image-container">
+                            <img src="canvas1.jpg" alt="Placeholder Canvas Print Image" class="product-image">
+                        </div>
+                        <div class="product-info">
+                            <h3><a href="#">Custom Canvas Print</a></h3>
+                            <p class="product-price">$3.99</p>
+                        </div>
+                        <div class="add-to-cart-overlay">
+                            <button class="btn-add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image-container">
+                            <img src="canvas2.jpg" alt="Placeholder Canvas Print Image" class="product-image">
+                        </div>
+                        <div class="product-info">
+                            <h3><a href="#">Extra Large Canvas Prints</a></h3>
+                            <p class="product-price">$3.99</p>
+                        </div>
+                        <div class="add-to-cart-overlay">
+                            <button class="btn-add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image-container">
+                            <img src="canvas3.jpg" alt="Placeholder Canvas Print Image" class="product-image">
+                        </div>
+                        <div class="product-info">
+                            <h3><a href="#">Luxury Canvas Print</a></h3>
+                            <p class="product-price">$3.99</p>
+                        </div>
+                        <div class="add-to-cart-overlay">
+                            <button class="btn-add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image-container">
+                            <img src="canvas4.jpg" alt="Placeholder Canvas Print Image" class="product-image">
+                        </div>
+                        <div class="product-info">
+                            <h3><a href="#">Wall Art Canvas Print</a></h3>
+                            <p class="product-price">$3.99</p>
+                        </div>
+                        <div class="add-to-cart-overlay">
+                            <button class="btn-add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                    </div>
+            </div>
+
+            <div style="margin-bottom: 3rem;">
+                <h2 class="section-title">Services</h2>
+                <div class="grid grid-md-2 gap-8">
+                    <div style="border: 1px solid var(--gray-300); border-radius: 0.5rem; padding: 1.5rem; text-align: center;">
+                        <h3 class="section-subtitle" style="margin-bottom: 1rem;">Custom Logo Design</h3>
+                        <div style="margin-bottom: 1rem; color: var(--gray-600);">
+                            <p>Need a unique logo for your brand?</p>
+                            <p>Our designers can create something perfect for you.</p>
+                        </div>
+                        <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+                            <select class="form-input" style="width: 50%;">
+                                <option>Basic Package</option>
+                                <option>Standard Package</option>
+                                <option>Premium Package</option>
+                            </select>
+                            <span style="font-weight: 500; color: var(--gray-700); display: flex; align-items: center;">from $49</span>
+                        </div>
+                        <button class="btn-claim" style="width: 100%;">Learn More</button>
+                    </div>
+                    <div style="border: 1px solid var(--gray-300); border-radius: 0.5rem; padding: 1.5rem;">
+                        <h3 class="section-subtitle" style="margin-bottom: 1rem;">Sustainable & Eco-Friendly Option</h3>
+                        <div style="color: var(--gray-600);">
+                            <ul>
+                                <li>Uses recycled packaging for all shipping.</li>
+                                <li>Printed on FSC-certified paper (where applicable).</li>
+                                <li>T-shirt: recycled and organic cotton blends.</li>
+                                <li>Mugs: durable materials for long-term use.</li>
+                                <li>Support responsible sourcing and packaging.</li>
+                            </ul>
+                        </div>
+                        <button class="btn-claim" style="margin-top: 1rem; width: 100%;">Read Our Policy</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact-page" class="page hidden contact-page-content">
+            <h2 class="section-title" style="margin-bottom: 1rem;">Who We Are</h2>
+            <p>
+                PaperPrint is your go-to online destination for high-quality printed products. From business materials to personalized gifts, we make printing fast, easy, and reliable. As demand grows, we're upgrading our technology to serve you even better-delivering great results with every order.
+            </p>
+
+            <h2 class="team-intro-title">My Team Introduction</h2>
+            <div class="grid grid-md-3 gap-8 team-grid">
+                <div class="team-member">
+                    <div class="placeholder-img-sq"><img src="cd.jpg" width="160" height="160"></div>
+                    <p>Emily Chen – Creative Director: With over 8 years in graphic design and branding, Emily leads our design team to ensure every product looks its best. She's passionate about creativity, color, and clean layouts.</p>
+                </div>
+                <div class="team-member">
+                    <div class="placeholder-img-sq"><img src="hoo.jpg" width="160" height="160"></div>
+                    <p>Mark Davis – Head of Operations: Mark oversees order processing, logistics, and customer service. With a background in e-commerce management, he ensures every order runs smoothly from start to finish.</p>
+                </div>
+                <div class="team-member">
+                    <div class="placeholder-img-sq"><img src="wd.jpg" width="160" height="160"></div>
+                    <p>Sofia Nguyen – Web & IT Specialist: Sofia is responsible for maintaining our online platform and digital tools. She’s focused on making your online experience fast, secure, and user-friendly.</p>
+                </div>
+            </div>
+
+            <div class="contact-form-wrapper">
+                <div class="form-grid grid-md-2">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" class="form-input">
+                    </div>
+                </div>
+                <div class="form-group" style="margin-bottom: 1rem;">
+                     <label for="review">Enter Your Review For Our Product</label>
+                     <textarea id="review" rows="4" class="form-textarea"></textarea>
+                </div>
+                 <p class="form-hint">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <button class="btn-claim">Submit</button>
+            </div>
+        </section>
+
+        <section id="signup-page" class="page hidden">
+             <div class="auth-form-container">
+                <h2>SIGN UP</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="signup-email">ENTER YOUR EMAIL</label>
+                        <input type="email" id="signup-email" class="form-input">
+                    </div>
+                    <div class="form-grid" style="grid-template-columns: 1fr 1fr; margin-bottom: 0;">
+                        <div class="form-group">
+                            <label for="first-name">FIRST NAME</label>
+                            <input type="text" id="first-name" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="last-name">LAST NAME</label>
+                            <input type="text" id="last-name" class="form-input">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-password">ENTER PASSWORD</label>
+                        <input type="password" id="signup-password" class="form-input">
+                    </div>
+                    <div class="terms-group">
+                        <input type="checkbox" id="terms">
+                        <label for="terms">I Have Read and accept our rule <a href="#">Terms & Conditions</a></label>
+                    </div>
+                    <button type="submit" class="btn-submit">Start Creating Now</button>
+                </form>
+                <div class="divider">
+                    <div class="divider-line"></div>
+                    <span class="divider-text">Or Sign Up With</span>
+                    <div class="divider-line"></div>
+                </div>
+                 <div class="social-signup">
+                    <button class="social-btn social-btn-f">F</button>
+                    <button class="social-btn social-btn-g">G</button>
+                    <button class="social-btn social-btn-l">L</button>
+                </div>
+                <p class="auth-redirect">Already Account? <a href="#signin" onclick="showPage('signin')">Sign In</a></p>
+            </div>
+        </section>
+
+        <section id="signin-page" class="page hidden">
+            <div class="auth-form-container">
+                <h2>SIGN IN</h2>
+                <form id="signin-form">
+                    <div class="form-group">
+                        <label for="signin-email">ENTER YOUR EMAIL</label>
+                        <input type="email" id="signin-email" class="form-input" required>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <label for="signin-password">ENTER PASSWORD</label>
+                        <input type="password" id="signin-password" class="form-input" required>
+                    </div>
+                    <button type="submit" class="btn-submit">Sign In</button>
+                </form>
+                <div class="divider">
+                    <div class="divider-line"></div>
+                    <span class="divider-text">Or Sign In With</span>
+                    <div class="divider-line"></div>
+                </div>
+                 <div class="social-signup">
+                    <button class="social-btn social-btn-f">F</button>
+                    <button class="social-btn social-btn-g">G</button>
+                    <button class="social-btn social-btn-l">L</button>
+                </div>
+                <div class="auth-redirect">
+                    <a href="#">Forgot Your Password</a>
+                    <span style="margin: 0 0.5rem;">Or</span>
+                    <a href="#signup" onclick="showPage('signup')">Create a New Account</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="profile-page" class="page hidden">
+            <div class="profile-card">
+                <div class="profile-header">
+                    <div class="profile-banner"></div>
+                    <div class="profile-avatar"></div>
+                </div>
+                <div class="profile-body">
+                    <h3 id="profile-nickname">Nickname</h3>
+                    <p id="profile-email"></p>
+                    <button class="btn-edit-profile">Edit Profile</button>
+                    
+                    <div class="profile-actions">
+                        <button class="profile-action-btn">Account Information</button>
+                        <button class="profile-action-btn">View Member</button>
+                        <button class="profile-action-btn">Order History</button>
+                        <button id="logout-btn" class="profile-action-btn btn-logout">Log Out</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="main-footer" class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h4>ABOUT & CONTACT US</h4>
+                    <p>Get Enjoy Your Shopping Plan</p>
+                    <p>Thank You</p>
+                </div>
+                <div class="footer-buttons">
+                     <button class="btn-footer primary" onclick="showPage('contact')">Contact Us</button>
+                     <button class="btn-footer secondary">Become A Member</button>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <footer id="contact-footer" class="contact-footer hidden">
+        <div class="container">
+            <h3>Please Follow Us On FACEBOOK, INSTAGRAM, LINE</h3>
+            <p>Contact with us on social media and Get 20% Off</p>
+        </div>
+    </footer>
+
+    <script>
+        const pages = document.querySelectorAll('.page');
+        const mainHeader = document.getElementById('main-header');
+        const authHeader = document.getElementById('auth-header');
+        const mainFooter = document.getElementById('main-footer');
+        const contactFooter = document.getElementById('contact-footer');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        // --- AUTHENTICATION ELEMENTS ---
+        const loginNavBtn = document.getElementById('login-nav-btn');
+        const profileIcon = document.getElementById('profile-icon');
+        const signinForm = document.getElementById('signin-form');
+        const logoutBtn = document.getElementById('logout-btn');
+        const profileEmailDisplay = document.getElementById('profile-email');
+        const profileNicknameDisplay = document.getElementById('profile-nickname');
+
+
+        function showPage(pageId, clickedLink) {
+            pages.forEach(page => {
+                page.classList.add('hidden');
+            });
+
+            const targetPage = document.getElementById(pageId + '-page');
+            if (targetPage) {
+                targetPage.classList.remove('hidden');
+            }
+
+            const isAuthPage = pageId === 'signin' || pageId === 'signup' || pageId === 'profile';
+            mainHeader.classList.toggle('hidden', isAuthPage);
+            authHeader.classList.toggle('hidden', !isAuthPage);
+            
+            // Special footer logic
+            const isContactPage = pageId === 'contact';
+            mainFooter.classList.toggle('hidden', isAuthPage || isContactPage);
+            contactFooter.classList.toggle('hidden', !isContactPage);
+
+
+            if (clickedLink) {
+                 navLinks.forEach(link => {
+                    link.classList.remove('active');
+                });
+                document.querySelectorAll(`.nav-link[href="#${pageId}"]`).forEach(link => {
+                     link.classList.add('active');
+                });
+            }
+            
+            window.scrollTo(0, 0);
+        }
+
+        // --- AUTHENTICATION LOGIC ---
+
+        function updateAuthState() {
+            const loggedInUserEmail = localStorage.getItem('loggedInUserEmail');
+
+            if (loggedInUserEmail) {
+                // User is logged in
+                loginNavBtn.classList.add('hidden');
+                profileEmailDisplay.textContent = loggedInUserEmail;
+                profileNicknameDisplay.textContent = loggedInUserEmail.split('@')[0]; // Simple nickname from email
+            } else {
+                // User is logged out
+                loginNavBtn.classList.remove('hidden');
+                profileEmailDisplay.textContent = '';
+                profileNicknameDisplay.textContent = 'Nickname';
+            }
+        }
+
+        function handleProfileClick() {
+            const loggedInUserEmail = localStorage.getItem('loggedInUserEmail');
+            if (loggedInUserEmail) {
+                showPage('profile');
+            } else {
+                showPage('signin');
+            }
+        }
+
+        profileIcon.addEventListener('click', handleProfileClick);
+
+        signinForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting traditionally
+            const emailInput = document.getElementById('signin-email');
+            const userEmail = emailInput.value;
+
+            if (userEmail) {
+                localStorage.setItem('loggedInUserEmail', userEmail);
+                updateAuthState();
+                showPage('profile');
+                emailInput.value = ''; // Clear input field
+                document.getElementById('signin-password').value = '';
+            }
+        });
+
+        logoutBtn.addEventListener('click', function() {
+            localStorage.removeItem('loggedInUserEmail');
+            updateAuthState();
+            showPage('home', document.querySelector('.nav-link[href="#home"]'));
+        });
+        
+        // Initial setup on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            showPage('home', document.querySelector('.nav-link[href="#home"]'));
+            updateAuthState(); // Check login status as soon as the page loads
+        });
+    </script>
+</body>
+</html>
