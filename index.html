@@ -779,6 +779,26 @@
             background-color: var(--red-50); 
         }
 
+        /* --- START: ADDED FOR TOAST NOTIFICATION --- */
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: -400px; /* Start off-screen */
+            background-color: var(--cyan-500);
+            color: var(--white);
+            padding: 1rem 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+            z-index: 1000;
+            transition: right 0.5s ease-in-out;
+            font-weight: 500;
+        }
+        .toast.show {
+            right: 20px; /* Slide in */
+        }
+        /* --- END: ADDED FOR TOAST NOTIFICATION --- */
+
+
         /* --- Footer --- */
         .main-footer {
             border-top: 1px solid var(--gray-200);
@@ -910,7 +930,7 @@
 
     <header id="auth-header" class="auth-header hidden">
         <div class="container">
-            <h1 class="header-title">Paper Print</h1>
+            <h1 class="header-title" onclick="showPage('home', document.querySelector('.nav-link[href=\'#home\']'))">Paper Print</h1>
         </div>
     </header>
 
@@ -927,18 +947,18 @@
                     <button class="btn-dark">Shop Now</button>
                 </div>
                 <div class="placeholder-img-lg">
-                    <img src="https://placehold.co/600x400/e2e8f0/cccccc?text=+" alt="Placeholder Image">
+                    <img src="b&f1.jpg" alt="Placeholder Image">
                 </div>
             </div>
 
             <h3 class="section-subtitle">The Latest</h3>
             <div class="grid grid-md-2 gap-8" style="margin-bottom: 3rem;">
                 <div class="latest-item">
-                    <div class="placeholder-img-lg" style="margin-bottom: 0.5rem;"><img src="https://placehold.co/600x400/e2e8f0/cccccc?text=+" alt="Placeholder Image"></div>
+                    <div class="placeholder-img-lg" style="margin-bottom: 0.5rem;"><img src="b&f2.jpg" alt="Placeholder Image"></div>
                     <a href="#" class="shop-now-link">Shop Now</a>
                 </div>
                 <div class="latest-item">
-                    <div class="placeholder-img-lg" style="margin-bottom: 0.5rem;"><img src="https://placehold.co/600x400/e2e8f0/cccccc?text=+" alt="Placeholder Image"></div>
+                    <div class="placeholder-img-lg" style="margin-bottom: 0.5rem;"><img src="b&f3.jpg" alt="Placeholder Image"></div>
                     <a href="#" class="shop-now-link">Shop Now</a>
                 </div>
             </div>
@@ -946,15 +966,15 @@
             <h3 class="section-subtitle">Featured</h3>
             <div class="grid grid-sm-2 grid-md-3 gap-8">
                 <div class="featured-item">
-                    <div class="placeholder-img-tall"><img src="https://placehold.co/400x600/e2e8f0/cccccc?text=+" alt="Placeholder Image"></div>
+                    <div class="placeholder-img-tall"><img src="summer.jpg" alt="Placeholder Image"></div>
                     <p>Cool For Summer</p>
                 </div>
                 <div class="featured-item">
-                    <div class="placeholder-img-tall"><img src="https://placehold.co/400x600/e2e8f0/cccccc?text=+" alt="Placeholder Image"></div>
+                    <div class="placeholder-img-tall"><img src="luxury.jpg" alt="Placeholder Image"></div>
                     <p>Luxury Vibe</p>
                 </div>
                 <div class="featured-item">
-                    <div class="placeholder-img-tall"><img src="https://placehold.co/400x600/e2e8f0/cccccc?text=+" alt="Placeholder Image"></div>
+                    <div class="placeholder-img-tall"><img src="kids.jpg" alt="Placeholder Image"></div>
                     <p>For Kids</p>
                 </div>
             </div>
@@ -964,21 +984,21 @@
             <h2 class="page-title">Membership</h2>
             <div class="grid grid-md-3 gap-8" style="margin-bottom: 4rem;">
                 <div class="membership-card">
-                     <div class="placeholder-img-md"><img src="https://placehold.co/300x200/e2e8f0/cccccc?text=+" alt="Placeholder Image"></div>
+                     <div class="placeholder-img-md"><img src="bronze.png" alt="Placeholder Image"></div>
                     <h3>Bronze Member</h3>
                     <p class="description">Access Member Only Sales and Basic Customer Support.</p>
                     <p class="price">Monthly Fee - $9.99</p>
                     <button class="btn-buy">Click to Buy</button>
                 </div>
                 <div class="membership-card">
-                     <div class="placeholder-img-md"><img src="https://placehold.co/300x200/e2e8f0/cccccc?text=+" alt="Placeholder Image"></div>
+                     <div class="placeholder-img-md"><img src="silver.png" alt="Placeholder Image"></div>
                     <h3>Silver Member</h3>
                     <p class="description">Access Member Only Sales, Birthday Discount, and Basic Customer Support.</p>
                      <p class="price">Monthly Fee - $19.99</p>
                     <button class="btn-buy">Click to Buy</button>
                 </div>
                 <div class="membership-card">
-                     <div class="placeholder-img-md"><img src="https://placehold.co/300x200/e2e8f0/cccccc?text=+" alt="Placeholder Image"></div>
+                     <div class="placeholder-img-md"><img src="gold.png" alt="Placeholder Image"></div>
                     <h3>Gold Member</h3>
                     <p class="description">All Silver benefits, plus Free Shipping and Priority Customer Support.</p>
                      <p class="price">Monthly Fee - $29.99</p>
@@ -1012,7 +1032,7 @@
             
             <h2 class="page-title" style="margin-top: 4rem;">Packages</h2>
             <div class="grid grid-cols-1 gap-y-10">
-        
+    
                 <div class="grid grid-md-2 gap-8 items-center">
                     <div>
                         <h3 class="section-subtitle" style="margin-bottom: 1rem; text-align: left;">Party Package</h3>
@@ -1024,11 +1044,11 @@
                         </div>
                         <button class="btn-claim">Select Package</button>
                     </div>
-                    <div class="placeholder-img-lg"><img src="https://placehold.co/600x400/e2e8f0/cccccc?text=+" alt="Party Package Image"></div>
+                    <div class="placeholder-img-lg"><img src="party.png" alt="Party Package Image"></div>
                 </div>
-        
+    
                 <div class="grid grid-md-2 gap-8 items-center">
-                     <div>
+                    <div>
                         <h3 class="section-subtitle" style="margin-bottom: 1rem; text-align: left;">Clothing Package</h3>
                         <div style="color: var(--gray-600); margin-bottom: 1.5rem; text-align: left;">
                             <p>1 Hoodie (custom design)</p>
@@ -1038,9 +1058,9 @@
                         </div>
                         <button class="btn-claim">Select Package</button>
                     </div>
-                    <div class="placeholder-img-lg"><img src="https://placehold.co/600x400/e2e8f0/cccccc?text=+" alt="Clothing Package Image"></div>
+                    <div class="placeholder-img-lg"><img src="clothing.jpg" alt="Clothing Package Image"></div>
                 </div>
-        
+    
                 <div class="grid grid-md-2 gap-8 items-center">
                     <div>
                         <h3 class="section-subtitle" style="margin-bottom: 1rem; text-align: left;">Office Package</h3>
@@ -1052,9 +1072,9 @@
                         </div>
                         <button class="btn-claim">Select Package</button>
                     </div>
-                    <div class="placeholder-img-lg"><img src="https://placehold.co/600x400/e2e8f0/cccccc?text=+" alt="Office Package Image"></div>
+                    <div class="placeholder-img-lg"><img src="office.jpg" alt="Office Package Image"></div>
                 </div>
-        
+    
             </div>
         </section>
 
@@ -1066,11 +1086,11 @@
                 <div class="grid grid-sm-2 grid-md-3 grid-lg-4 gap-x-6 gap-y-10">
                     <div class="product-card">
                         <div class="product-image-container">
-                            <img src="https://placehold.co/400x400/e2e8f0/cccccc?text=Bag" alt="Placeholder Bag Image" class="product-image">
+                            <img src="bag1.jpg" alt="Placeholder Bag Image" class="product-image">
                         </div>
                         <div class="product-info">
-                            <h3><a href="#">Bag Name</a></h3>
-                            <p class="product-price">$XX.XX</p>
+                            <h3><a href="#">REUSABLE BAG</a></h3>
+                            <p class="product-price">$30.00</p>
                         </div>
                         <div class="add-to-cart-overlay">
                             <button class="btn-add-to-cart">Add to Cart</button>
@@ -1078,11 +1098,11 @@
                     </div>
                     <div class="product-card">
                         <div class="product-image-container">
-                            <img src="https://placehold.co/400x400/e2e8f0/cccccc?text=Bag" alt="Placeholder Bag Image" class="product-image">
+                            <img src="bag2.jpg" alt="Placeholder Bag Image" class="product-image">
                         </div>
                         <div class="product-info">
-                            <h3><a href="#">Bag Name</a></h3>
-                            <p class="product-price">$XX.XX</p>
+                            <h3><a href="#">Sansa Tote Bag</a></h3>
+                            <p class="product-price">$45.00</p>
                         </div>
                         <div class="add-to-cart-overlay">
                             <button class="btn-add-to-cart">Add to Cart</button>
@@ -1090,11 +1110,11 @@
                     </div>
                     <div class="product-card">
                         <div class="product-image-container">
-                            <img src="https://placehold.co/400x400/e2e8f0/cccccc?text=Bag" alt="Placeholder Bag Image" class="product-image">
+                            <img src="bag3.jpg" alt="Placeholder Bag Image" class="product-image">
                         </div>
                         <div class="product-info">
-                            <h3><a href="#">Bag Name</a></h3>
-                            <p class="product-price">$XX.XX</p>
+                            <h3><a href="#">Backpack</a></h3>
+                            <p class="product-price">$70.00</p>
                         </div>
                         <div class="add-to-cart-overlay">
                             <button class="btn-add-to-cart">Add to Cart</button>
@@ -1102,11 +1122,11 @@
                     </div>
                     <div class="product-card">
                         <div class="product-image-container">
-                            <img src="https://placehold.co/400x400/e2e8f0/cccccc?text=Bag" alt="Placeholder Bag Image" class="product-image">
+                            <img src="bag4.jpg" alt="Placeholder Bag Image" class="product-image">
                         </div>
                         <div class="product-info">
-                            <h3><a href="#">Bag Name</a></h3>
-                            <p class="product-price">$XX.XX</p>
+                            <h3><a href="#">The Grooming Bag</a></h3>
+                            <p class="product-price">$45.99</p>
                         </div>
                         <div class="add-to-cart-overlay">
                             <button class="btn-add-to-cart">Add to Cart</button>
@@ -1114,11 +1134,11 @@
                     </div>
                     <div class="product-card">
                         <div class="product-image-container">
-                            <img src="https://placehold.co/400x400/e2e8f0/cccccc?text=Bag" alt="Placeholder Bag Image" class="product-image">
+                            <img src="bag5.jpg" alt="Placeholder Bag Image" class="product-image">
                         </div>
                         <div class="product-info">
-                            <h3><a href="#">Bag Name</a></h3>
-                            <p class="product-price">$XX.XX</p>
+                            <h3><a href="#">2WAY UTILITY BAG</a></h3>
+                            <p class="product-price">$36.99</p>
                         </div>
                         <div class="add-to-cart-overlay">
                             <button class="btn-add-to-cart">Add to Cart</button>
@@ -1126,11 +1146,11 @@
                     </div>
                     <div class="product-card">
                         <div class="product-image-container">
-                            <img src="https://placehold.co/400x400/e2e8f0/cccccc?text=Bag" alt="Placeholder Bag Image" class="product-image">
+                            <img src="bag6.jpg" alt="Placeholder Bag Image" class="product-image">
                         </div>
                         <div class="product-info">
-                            <h3><a href="#">Bag Name</a></h3>
-                            <p class="product-price">$XX.XX</p>
+                            <h3><a href="#">Skechers BAG</a></h3>
+                            <p class="product-price">$30.00</p>
                         </div>
                         <div class="add-to-cart-overlay">
                             <button class="btn-add-to-cart">Add to Cart</button>
@@ -1144,11 +1164,11 @@
                 <div class="grid grid-sm-2 grid-md-3 grid-lg-4 gap-x-6 gap-y-10">
                     <div class="product-card">
                         <div class="product-image-container">
-                            <img src="https://placehold.co/400x400/e2e8f0/cccccc?text=Mug" alt="Placeholder Mug Image" class="product-image">
+                            <img src="mug.jpg" alt="Placeholder Mug Image" class="product-image">
                         </div>
                         <div class="product-info">
-                            <h3><a href="#">Mug Name</a></h3>
-                            <p class="product-price">$XX.XX</p>
+                            <h3><a href="#">HELLO' Coffee Mug</a></h3>
+                            <p class="product-price">$5.00</p>
                         </div>
                         <div class="add-to-cart-overlay">
                             <button class="btn-add-to-cart">Add to Cart</button>
@@ -1156,11 +1176,11 @@
                     </div>
                     <div class="product-card">
                         <div class="product-image-container">
-                            <img src="https://placehold.co/400x400/e2e8f0/cccccc?text=Mug" alt="Placeholder Mug Image" class="product-image">
+                            <img src="mug1.jpg" alt="Placeholder Mug Image" class="product-image">
                         </div>
                         <div class="product-info">
-                            <h3><a href="#">Mug Name</a></h3>
-                            <p class="product-price">$XX.XX</p>
+                            <h3><a href="#">Ramakien Mug</a></h3>
+                            <p class="product-price">$10.00</p>
                         </div>
                         <div class="add-to-cart-overlay">
                             <button class="btn-add-to-cart">Add to Cart</button>
@@ -1168,11 +1188,11 @@
                     </div>
                     <div class="product-card">
                         <div class="product-image-container">
-                            <img src="https://placehold.co/400x400/e2e8f0/cccccc?text=Mug" alt="Placeholder Mug Image" class="product-image">
+                            <img src="mug2.jpg" alt="Placeholder Mug Image" class="product-image">
                         </div>
                         <div class="product-info">
-                            <h3><a href="#">Mug Name</a></h3>
-                            <p class="product-price">$XX.XX</p>
+                            <h3><a href="#">Toka Mug</a></h3>
+                            <p class="product-price">$10.00</p>
                         </div>
                         <div class="add-to-cart-overlay">
                             <button class="btn-add-to-cart">Add to Cart</button>
@@ -1180,11 +1200,11 @@
                     </div>
                     <div class="product-card">
                         <div class="product-image-container">
-                            <img src="https://placehold.co/400x400/e2e8f0/cccccc?text=Mug" alt="Placeholder Mug Image" class="product-image">
+                            <img src="mug3.jpg" alt="Placeholder Mug Image" class="product-image">
                         </div>
                         <div class="product-info">
-                            <h3><a href="#">Mug Name</a></h3>
-                            <p class="product-price">$XX.XX</p>
+                            <h3><a href="#">Cast Tan Coffee Mug</a></h3>
+                            <p class="product-price">$8.00</p>
                         </div>
                         <div class="add-to-cart-overlay">
                             <button class="btn-add-to-cart">Add to Cart</button>
@@ -1192,11 +1212,11 @@
                     </div>
                     <div class="product-card">
                         <div class="product-image-container">
-                            <img src="https://placehold.co/400x400/e2e8f0/cccccc?text=Mug" alt="Placeholder Mug Image" class="product-image">
+                            <img src="mug4.jpg" alt="Placeholder Mug Image" class="product-image">
                         </div>
                         <div class="product-info">
-                            <h3><a href="#">Mug Name</a></h3>
-                            <p class="product-price">$XX.XX</p>
+                            <h3><a href="#">Pink Flower Textured Mug</a></h3>
+                            <p class="product-price">$7 .00</p>
                         </div>
                         <div class="add-to-cart-overlay">
                             <button class="btn-add-to-cart">Add to Cart</button>
@@ -1204,11 +1224,11 @@
                     </div>
                     <div class="product-card">
                         <div class="product-image-container">
-                            <img src="https://placehold.co/400x400/e2e8f0/cccccc?text=Mug" alt="Placeholder Mug Image" class="product-image">
+                            <img src="mug5.jpg" alt="Placeholder Mug Image" class="product-image">
                         </div>
                         <div class="product-info">
-                            <h3><a href="#">Mug Name</a></h3>
-                            <p class="product-price">$XX.XX</p>
+                            <h3><a href="#">Printed Mug</a></h3>
+                            <p class="product-price">$5.00</p>
                         </div>
                         <div class="add-to-cart-overlay">
                             <button class="btn-add-to-cart">Add to Cart</button>
@@ -1222,11 +1242,11 @@
                 <div class="grid grid-sm-2 grid-md-3 grid-lg-4 gap-x-6 gap-y-10">
                     <div class="product-card">
                         <div class="product-image-container">
-                            <img src="https://placehold.co/400x400/e2e8f0/cccccc?text=T-Shirt" alt="Placeholder T-Shirt Image" class="product-image">
+                            <img src="tshirt.jpg" alt="Placeholder T-Shirt Image" class="product-image">
                         </div>
                         <div class="product-info">
-                            <h3><a href="#">T-Shirt Name</a></h3>
-                            <p class="product-price">$XX.XX</p>
+                            <h3><a href="#">Oversized Fit Cotton T-shirt</a></h3>
+                            <p class="product-price">$20.00</p>
                         </div>
                         <div class="add-to-cart-overlay">
                             <button class="btn-add-to-cart">Add to Cart</button>
@@ -1234,11 +1254,11 @@
                     </div>
                     <div class="product-card">
                         <div class="product-image-container">
-                            <img src="https://placehold.co/400x400/e2e8f0/cccccc?text=T-Shirt" alt="Placeholder T-Shirt Image" class="product-image">
+                            <img src="tshirt1.jpg" alt="Placeholder T-Shirt Image" class="product-image">
                         </div>
                         <div class="product-info">
-                            <h3><a href="#">T-Shirt Name</a></h3>
-                            <p class="product-price">$XX.XX</p>
+                            <h3><a href="#">BOSTON- Oversized T-Shirt</a></h3>
+                            <p class="product-price">$14.99</p>
                         </div>
                         <div class="add-to-cart-overlay">
                             <button class="btn-add-to-cart">Add to Cart</button>
@@ -1246,11 +1266,11 @@
                     </div>
                     <div class="product-card">
                         <div class="product-image-container">
-                            <img src="https://placehold.co/400x400/e2e8f0/cccccc?text=T-Shirt" alt="Placeholder T-Shirt Image" class="product-image">
+                            <img src="tshirt2.jpg" alt="Placeholder T-Shirt Image" class="product-image">
                         </div>
                         <div class="product-info">
-                            <h3><a href="#">T-Shirt Name</a></h3>
-                            <p class="product-price">$XX.XX</p>
+                            <h3><a href="#">Custom T Shirt Printing</a></h3>
+                            <p class="product-price">$14.99</p>
                         </div>
                         <div class="add-to-cart-overlay">
                             <button class="btn-add-to-cart">Add to Cart</button>
@@ -1258,11 +1278,11 @@
                     </div>
                     <div class="product-card">
                         <div class="product-image-container">
-                            <img src="https://placehold.co/400x400/e2e8f0/cccccc?text=T-Shirt" alt="Placeholder T-Shirt Image" class="product-image">
+                            <img src="tshirt3.jpg" alt="Placeholder T-Shirt Image" class="product-image">
                         </div>
                         <div class="product-info">
-                            <h3><a href="#">T-Shirt Name</a></h3>
-                            <p class="product-price">$XX.XX</p>
+                            <h3><a href="#">AIRism Cotton Oversized Crew Neck T-Shirt</a></h3>
+                            <p class="product-price">$16.99</p>
                         </div>
                         <div class="add-to-cart-overlay">
                             <button class="btn-add-to-cart">Add to Cart</button>
@@ -1270,11 +1290,11 @@
                     </div>
                     <div class="product-card">
                         <div class="product-image-container">
-                            <img src="https://placehold.co/400x400/e2e8f0/cccccc?text=T-Shirt" alt="Placeholder T-Shirt Image" class="product-image">
+                            <img src="tshirt4.jpg" alt="Placeholder T-Shirt Image" class="product-image">
                         </div>
                         <div class="product-info">
-                            <h3><a href="#">T-Shirt Name</a></h3>
-                            <p class="product-price">$XX.XX</p>
+                            <h3><a href="#">PERFECT T-SHIRT</a></h3>
+                            <p class="product-price">$13.99</p>
                         </div>
                         <div class="add-to-cart-overlay">
                             <button class="btn-add-to-cart">Add to Cart</button>
@@ -1282,11 +1302,11 @@
                     </div>
                     <div class="product-card">
                         <div class="product-image-container">
-                            <img src="https://placehold.co/400x400/e2e8f0/cccccc?text=T-Shirt" alt="Placeholder T-Shirt Image" class="product-image">
+                            <img src="tshirt5.jpg" alt="Placeholder T-Shirt Image" class="product-image">
                         </div>
                         <div class="product-info">
-                            <h3><a href="#">T-Shirt Name</a></h3>
-                            <p class="product-price">$XX.XX</p>
+                            <h3><a href="#">Starter Print T-shirt </a></h3>
+                            <p class="product-price">$13.99</p>
                         </div>
                         <div class="add-to-cart-overlay">
                             <button class="btn-add-to-cart">Add to Cart</button>
@@ -1300,11 +1320,11 @@
                 <div class="grid grid-sm-2 grid-md-3 grid-lg-4 gap-x-6 gap-y-10">
                     <div class="product-card">
                         <div class="product-image-container">
-                            <img src="https://placehold.co/400x400/e2e8f0/cccccc?text=Calendar" alt="Placeholder Calendar Image" class="product-image">
+                            <img src="calendar.jpg" alt="Placeholder Calendar Image" class="product-image">
                         </div>
                         <div class="product-info">
-                            <h3><a href="#">Calendar Name</a></h3>
-                            <p class="product-price">$XX.XX</p>
+                            <h3><a href="#">Wall Calendar</a></h3>
+                            <p class="product-price">$1.99</p>
                         </div>
                         <div class="add-to-cart-overlay">
                             <button class="btn-add-to-cart">Add to Cart</button>
@@ -1312,11 +1332,11 @@
                     </div>
                     <div class="product-card">
                         <div class="product-image-container">
-                            <img src="https://placehold.co/400x400/e2e8f0/cccccc?text=Calendar" alt="Placeholder Calendar Image" class="product-image">
+                            <img src="calendar1.jpg" alt="Placeholder Calendar Image" class="product-image">
                         </div>
                         <div class="product-info">
-                            <h3><a href="#">Calendar Name</a></h3>
-                            <p class="product-price">$XX.XX</p>
+                            <h3><a href="#">Simple Desk Calendar</a></h3>
+                            <p class="product-price">$1.99</p>
                         </div>
                         <div class="add-to-cart-overlay">
                             <button class="btn-add-to-cart">Add to Cart</button>
@@ -1324,11 +1344,11 @@
                     </div>
                     <div class="product-card">
                         <div class="product-image-container">
-                            <img src="https://placehold.co/400x400/e2e8f0/cccccc?text=Calendar" alt="Placeholder Calendar Image" class="product-image">
+                            <img src="calendar2.jpg" alt="Placeholder Calendar Image" class="product-image">
                         </div>
                         <div class="product-info">
-                            <h3><a href="#">Calendar Name</a></h3>
-                            <p class="product-price">$XX.XX</p>
+                            <h3><a href="#">Multipurpose Wall calendar</a></h3>
+                            <p class="product-price">$1.99</p>
                         </div>
                         <div class="add-to-cart-overlay">
                             <button class="btn-add-to-cart">Add to Cart</button>
@@ -1336,11 +1356,11 @@
                     </div>
                     <div class="product-card">
                         <div class="product-image-container">
-                            <img src="https://placehold.co/400x400/e2e8f0/cccccc?text=Calendar" alt="Placeholder Calendar Image" class="product-image">
+                            <img src="calendar3.jpg" alt="Placeholder Calendar Image" class="product-image">
                         </div>
                         <div class="product-info">
-                            <h3><a href="#">Calendar Name</a></h3>
-                            <p class="product-price">$XX.XX</p>
+                            <h3><a href="#">Vector calendar</a></h3>
+                            <p class="product-price">$1.99</p>
                         </div>
                         <div class="add-to-cart-overlay">
                             <button class="btn-add-to-cart">Add to Cart</button>
@@ -1348,11 +1368,11 @@
                     </div>
                     <div class="product-card">
                         <div class="product-image-container">
-                            <img src="https://placehold.co/400x400/e2e8f0/cccccc?text=Calendar" alt="Placeholder Calendar Image" class="product-image">
+                            <img src="calendar4.jpg" alt="Placeholder Calendar Image" class="product-image">
                         </div>
                         <div class="product-info">
-                            <h3><a href="#">Calendar Name</a></h3>
-                            <p class="product-price">$XX.XX</p>
+                            <h3><a href="#">Creative calendar</a></h3>
+                            <p class="product-price">$1.99</p>
                         </div>
                         <div class="add-to-cart-overlay">
                             <button class="btn-add-to-cart">Add to Cart</button>
@@ -1360,11 +1380,11 @@
                     </div>
                     <div class="product-card">
                         <div class="product-image-container">
-                            <img src="https://placehold.co/400x400/e2e8f0/cccccc?text=Calendar" alt="Placeholder Calendar Image" class="product-image">
+                            <img src="calendar5.jpg" alt="Placeholder Calendar Image" class="product-image">
                         </div>
                         <div class="product-info">
-                            <h3><a href="#">Calendar Name</a></h3>
-                            <p class="product-price">$XX.XX</p>
+                            <h3><a href="#">Monthly Calendar</a></h3>
+                            <p class="product-price">$1.99</p>
                         </div>
                         <div class="add-to-cart-overlay">
                             <button class="btn-add-to-cart">Add to Cart</button>
@@ -1378,11 +1398,11 @@
                 <div class="grid grid-sm-2 grid-md-3 grid-lg-4 gap-x-6 gap-y-10">
                     <div class="product-card">
                         <div class="product-image-container">
-                            <img src="https://placehold.co/400x400/e2e8f0/cccccc?text=Canvas+Print" alt="Placeholder Canvas Print Image" class="product-image">
+                            <img src="canvas.jpg" alt="Placeholder Canvas Print Image" class="product-image">
                         </div>
                         <div class="product-info">
-                            <h3><a href="#">Canvas Print Name</a></h3>
-                            <p class="product-price">$XX.XX</p>
+                            <h3><a href="#">Classic Canvas Prints</a></h3>
+                            <p class="product-price">$3.99</p>
                         </div>
                         <div class="add-to-cart-overlay">
                             <button class="btn-add-to-cart">Add to Cart</button>
@@ -1390,11 +1410,11 @@
                     </div>
                     <div class="product-card">
                         <div class="product-image-container">
-                            <img src="https://placehold.co/400x400/e2e8f0/cccccc?text=Canvas+Print" alt="Placeholder Canvas Print Image" class="product-image">
+                            <img src="canvas1.jpg" alt="Placeholder Canvas Print Image" class="product-image">
                         </div>
                         <div class="product-info">
-                            <h3><a href="#">Canvas Print Name</a></h3>
-                            <p class="product-price">$XX.XX</p>
+                            <h3><a href="#">Custom Canvas Print</a></h3>
+                            <p class="product-price">$3.99</p>
                         </div>
                         <div class="add-to-cart-overlay">
                             <button class="btn-add-to-cart">Add to Cart</button>
@@ -1402,11 +1422,11 @@
                     </div>
                     <div class="product-card">
                         <div class="product-image-container">
-                            <img src="https://placehold.co/400x400/e2e8f0/cccccc?text=Canvas+Print" alt="Placeholder Canvas Print Image" class="product-image">
+                            <img src="canvas2.jpg" alt="Placeholder Canvas Print Image" class="product-image">
                         </div>
                         <div class="product-info">
-                            <h3><a href="#">Canvas Print Name</a></h3>
-                            <p class="product-price">$XX.XX</p>
+                            <h3><a href="#">Extra Large Canvas Prints</a></h3>
+                            <p class="product-price">$3.99</p>
                         </div>
                         <div class="add-to-cart-overlay">
                             <button class="btn-add-to-cart">Add to Cart</button>
@@ -1414,11 +1434,11 @@
                     </div>
                     <div class="product-card">
                         <div class="product-image-container">
-                            <img src="https://placehold.co/400x400/e2e8f0/cccccc?text=Canvas+Print" alt="Placeholder Canvas Print Image" class="product-image">
+                            <img src="canvas3.jpg" alt="Placeholder Canvas Print Image" class="product-image">
                         </div>
                         <div class="product-info">
-                            <h3><a href="#">Canvas Print Name</a></h3>
-                            <p class="product-price">$XX.XX</p>
+                            <h3><a href="#">Luxury Canvas Print</a></h3>
+                            <p class="product-price">$3.99</p>
                         </div>
                         <div class="add-to-cart-overlay">
                             <button class="btn-add-to-cart">Add to Cart</button>
@@ -1426,11 +1446,11 @@
                     </div>
                     <div class="product-card">
                         <div class="product-image-container">
-                            <img src="https://placehold.co/400x400/e2e8f0/cccccc?text=Canvas+Print" alt="Placeholder Canvas Print Image" class="product-image">
+                            <img src="canvas4.jpg" alt="Placeholder Canvas Print Image" class="product-image">
                         </div>
                         <div class="product-info">
-                            <h3><a href="#">Canvas Print Name</a></h3>
-                            <p class="product-price">$XX.XX</p>
+                            <h3><a href="#">Wall Art Canvas Print</a></h3>
+                            <p class="product-price">$3.99</p>
                         </div>
                         <div class="add-to-cart-overlay">
                             <button class="btn-add-to-cart">Add to Cart</button>
@@ -1478,22 +1498,22 @@
         <section id="contact-page" class="page hidden contact-page-content">
             <h2 class="section-title" style="margin-bottom: 1rem;">Who We Are</h2>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                PaperPrint is your go-to online destination for high-quality printed products. From business materials to personalized gifts, we make printing fast, easy, and reliable. As demand grows, we're upgrading our technology to serve you even better-delivering great results with every order.
             </p>
 
             <h2 class="team-intro-title">My Team Introduction</h2>
             <div class="grid grid-md-3 gap-8 team-grid">
                 <div class="team-member">
-                    <div class="placeholder-img-sq"></div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <div class="placeholder-img-sq"><img src="cd.jpg" width="160" height="160"></div>
+                    <p>Emily Chen – Creative Director: With over 8 years in graphic design and branding, Emily leads our design team to ensure every product looks its best. She's passionate about creativity, color, and clean layouts.</p>
                 </div>
                 <div class="team-member">
-                    <div class="placeholder-img-sq"></div>
-                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <div class="placeholder-img-sq"><img src="hoo.jpg" width="160" height="160"></div>
+                    <p>Mark Davis – Head of Operations: Mark oversees order processing, logistics, and customer service. With a background in e-commerce management, he ensures every order runs smoothly from start to finish.</p>
                 </div>
                 <div class="team-member">
-                    <div class="placeholder-img-sq"></div>
-                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                    <div class="placeholder-img-sq"><img src="wd.jpg" width="160" height="160"></div>
+                    <p>Sofia Nguyen – Web & IT Specialist: Sofia is responsible for maintaining our online platform and digital tools. She’s focused on making your online experience fast, secure, and user-friendly.</p>
                 </div>
             </div>
 
@@ -1520,27 +1540,27 @@
         <section id="signup-page" class="page hidden">
              <div class="auth-form-container">
                 <h2>SIGN UP</h2>
-                <form>
+                <form id="signup-form">
                     <div class="form-group">
                         <label for="signup-email">ENTER YOUR EMAIL</label>
-                        <input type="email" id="signup-email" class="form-input">
+                        <input type="email" id="signup-email" class="form-input" required>
                     </div>
                     <div class="form-grid" style="grid-template-columns: 1fr 1fr; margin-bottom: 0;">
                         <div class="form-group">
                             <label for="first-name">FIRST NAME</label>
-                            <input type="text" id="first-name" class="form-input">
+                            <input type="text" id="first-name" class="form-input" required>
                         </div>
                         <div class="form-group">
                             <label for="last-name">LAST NAME</label>
-                            <input type="text" id="last-name" class="form-input">
+                            <input type="text" id="last-name" class="form-input" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="signup-password">ENTER PASSWORD</label>
-                        <input type="password" id="signup-password" class="form-input">
+                        <input type="password" id="signup-password" class="form-input" required>
                     </div>
                     <div class="terms-group">
-                        <input type="checkbox" id="terms">
+                        <input type="checkbox" id="terms" required>
                         <label for="terms">I Have Read and accept our rule <a href="#">Terms & Conditions</a></label>
                     </div>
                     <button type="submit" class="btn-submit">Start Creating Now</button>
@@ -1636,6 +1656,7 @@
         </div>
     </footer>
 
+    <div id="toast-notification" class="toast">Login successfully</div>
     <script>
         const pages = document.querySelectorAll('.page');
         const mainHeader = document.getElementById('main-header');
@@ -1652,6 +1673,15 @@
         const profileEmailDisplay = document.getElementById('profile-email');
         const profileNicknameDisplay = document.getElementById('profile-nickname');
 
+        // --- START: ADDED FOR TOAST NOTIFICATION ---
+        function showToast() {
+            const toast = document.getElementById('toast-notification');
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000); // Hide after 3 seconds
+        }
+        // --- END: ADDED FOR TOAST NOTIFICATION ---
 
         function showPage(pageId, clickedLink) {
             pages.forEach(page => {
@@ -1675,11 +1705,11 @@
 
             if (clickedLink) {
                  navLinks.forEach(link => {
-                    link.classList.remove('active');
-                });
-                document.querySelectorAll(`.nav-link[href="#${pageId}"]`).forEach(link => {
-                     link.classList.add('active');
-                });
+                     link.classList.remove('active');
+                 });
+                 document.querySelectorAll(`.nav-link[href="#${pageId}"]`).forEach(link => {
+                      link.classList.add('active');
+                 });
             }
             
             window.scrollTo(0, 0);
@@ -1723,6 +1753,7 @@
                 localStorage.setItem('loggedInUserEmail', userEmail);
                 updateAuthState();
                 showPage('profile');
+                showToast(); // <-- Call the toast function on successful login
                 emailInput.value = ''; // Clear input field
                 document.getElementById('signin-password').value = '';
             }
