@@ -427,6 +427,10 @@
         .btn-claim:hover { 
             background-color: var(--cyan-600); 
         }
+        .btn-claim:disabled {
+            background-color: var(--gray-400);
+            cursor: not-allowed;
+        }
 
         /* --- Products Page --- */
         .product-card {
@@ -797,7 +801,7 @@
             right: 20px; /* Slide in */
         }
         
-        /* --- START: ADDED FOR CHECKOUT PAGE --- */
+        /* --- Checkout Page --- */
         .checkout-form-container {
             border: 1px solid var(--gray-200);
             border-radius: 0.75rem;
@@ -832,7 +836,55 @@
             padding: 1.5rem;
             background-color: var(--white);
         }
-        /* --- END: ADDED FOR CHECKOUT PAGE --- */
+
+        /* --- START: ADDED FOR DISCOUNT MODAL --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .modal-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal-content {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+            width: 90%;
+            max-width: 32rem;
+            position: relative;
+            transform: translateY(-50px);
+            transition: transform 0.3s ease;
+        }
+        .modal-overlay.show .modal-content {
+            transform: translateY(0);
+        }
+        .modal-close {
+            position: absolute;
+            top: 0.5rem;
+            right: 1rem;
+            font-size: 2rem;
+            font-weight: 300;
+            color: var(--gray-400);
+            line-height: 1;
+        }
+        .modal-close:hover {
+            color: var(--gray-800);
+        }
+        /* --- END: ADDED FOR DISCOUNT MODAL --- */
+
 
         /* --- Footer --- */
         .main-footer {
@@ -1046,8 +1098,8 @@
                 <div class="discount-card light">
                     <h3>First-Time Visitor Discounts</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    <button class="btn-claim">Claim 20% Discount</button>
-                </div>
+                    <button id="claim-20-percent" class="btn-claim">Claim 20% Discount</button>
+                    </div>
                  <div class="discount-card dark">
                     <h3>Sign Up Bonus</h3>
                     <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
@@ -1770,6 +1822,20 @@
 
     <div id="toast-notification" class="toast">Login successfully</div>
 
+    <div id="discount-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <button id="modal-close-btn" class="modal-close">&times;</button>
+            <h3 class="section-subtitle">Claim Your 20% Discount!</h3>
+            <p style="color: var(--gray-600); margin-bottom: 1.5rem;">Enter your email below to receive your unique discount code.</p>
+            <form id="discount-claim-form">
+                <div class="form-group">
+                    <label for="discount-email">Email Address</label>
+                    <input type="email" id="discount-email" class="form-input" required placeholder="you@example.com">
+                </div>
+                <button type="submit" class="btn-submit" style="margin-top: 1rem;">Get My Code</button>
+            </form>
+        </div>
+    </div>
     <script>
         const pages = document.querySelectorAll('.page');
         const mainHeader = document.getElementById('main-header');
@@ -1804,9 +1870,7 @@
                 targetPage.classList.remove('hidden');
             }
 
-            // --- START: MODIFIED FOR CHECKOUT PAGE ---
             const isAuthPage = pageId === 'signin' || pageId === 'signup' || pageId === 'profile' || pageId === 'checkout';
-            // --- END: MODIFIED FOR CHECKOUT PAGE ---
             
             mainHeader.classList.toggle('hidden', isAuthPage);
             authHeader.classList.toggle('hidden', !isAuthPage);
@@ -1859,7 +1923,7 @@
         profileIcon.addEventListener('click', handleProfileClick);
 
         signinForm.addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent the form from submitting traditionally
+            event.preventDefault(); 
             const emailInput = document.getElementById('signin-email');
             const userEmail = emailInput.value;
 
@@ -1868,7 +1932,7 @@
                 updateAuthState();
                 showPage('profile');
                 showToast(); 
-                emailInput.value = ''; // Clear input field
+                emailInput.value = ''; 
                 document.getElementById('signin-password').value = '';
             }
         });
@@ -1879,34 +1943,31 @@
             showPage('home', document.querySelector('.nav-link[href="#home"]'));
         });
         
-        // --- START: ADDED FOR CHECKOUT LOGIC ---
+        // --- CHECKOUT LOGIC ---
         const buyButtons = document.querySelectorAll('.btn-buy');
         const checkoutForm = document.getElementById('checkout-form');
 
         buyButtons.forEach(button => {
             button.addEventListener('click', (event) => {
                 if (window.confirm("Are you sure you want to buy it?")) {
-                    // Find the parent card to get item details
                     const card = event.target.closest('.membership-card');
                     const itemName = card.querySelector('h3').textContent;
                     const itemPriceText = card.querySelector('.price').textContent; 
                     
-                    // Extract the number from the price string
-                    const price = parseFloat(itemPriceText.match(/[\d\.]+/));
+                    const priceMatch = itemPriceText.match(/[\d\.]+/);
+                    const price = priceMatch ? parseFloat(priceMatch[0]) : NaN;
                     
                     if (!isNaN(price)) {
-                        // Update the summary on the checkout page
                         document.getElementById('summary-item-name').textContent = itemName;
                         document.getElementById('summary-item-price').textContent = `$${price.toFixed(2)}`;
                         document.getElementById('summary-subtotal').textContent = `$${price.toFixed(2)}`;
                         
-                        const tax = price * 0.07; // 7% tax
+                        const tax = price * 0.07;
                         const total = price + tax;
                         
                         document.getElementById('summary-tax').textContent = `$${tax.toFixed(2)}`;
                         document.getElementById('summary-total').textContent = `$${total.toFixed(2)}`;
                         
-                        // Show the checkout page
                         showPage('checkout');
                     } else {
                         alert('Could not determine the price. Please try again.');
@@ -1921,12 +1982,49 @@
             showPage('home', document.querySelector('.nav-link[href="#home"]'));
             checkoutForm.reset();
         });
-        // --- END: ADDED FOR CHECKOUT LOGIC ---
+
+        // --- START: ADDED DISCOUNT MODAL LOGIC ---
+        const claimDiscountBtn = document.getElementById('claim-20-percent');
+        const discountModal = document.getElementById('discount-modal');
+        const closeModalBtn = document.getElementById('modal-close-btn');
+        const discountForm = document.getElementById('discount-claim-form');
+
+        const openDiscountModal = () => {
+            discountModal.classList.remove('hidden');
+            setTimeout(() => discountModal.classList.add('show'), 10);
+        };
+
+        const closeDiscountModal = () => {
+            discountModal.classList.remove('show');
+            setTimeout(() => discountModal.classList.add('hidden'), 300);
+        };
+
+        claimDiscountBtn.addEventListener('click', openDiscountModal);
+        closeModalBtn.addEventListener('click', closeDiscountModal);
+        
+        discountModal.addEventListener('click', (event) => {
+            if (event.target === discountModal) {
+                closeDiscountModal();
+            }
+        });
+
+        discountForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const emailInput = document.getElementById('discount-email');
+            alert(`Success! Your 20% discount code has been sent to ${emailInput.value}.`);
+            
+            closeDiscountModal();
+            emailInput.value = ''; 
+
+            claimDiscountBtn.disabled = true;
+            claimDiscountBtn.textContent = 'Discount Claimed';
+        });
+
 
         // Initial setup on page load
         document.addEventListener('DOMContentLoaded', () => {
             showPage('home', document.querySelector('.nav-link[href="#home"]'));
-            updateAuthState(); // Check login status as soon as the page loads
+            updateAuthState(); 
         });
     </script>
 </body>
