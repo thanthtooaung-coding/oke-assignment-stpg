@@ -28,6 +28,7 @@
             --blue-100: #dbeafe;
             --red-50: #fef2f2;
             --red-500: #ef4444;
+            --green-500: #10b981;
             --black: #000;
             --white: #fff;
         }
@@ -486,13 +487,58 @@
             left: 0;
             right: 0;
             padding: 1rem;
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(4px);
             transform: translateY(100%);
             transition: transform 0.3s ease-in-out;
         }
         .product-card:hover .add-to-cart-overlay {
             transform: translateY(0);
+        }
+
+        /* --- Quantity Selector Styles --- */
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+        }
+        .quantity-btn {
+            width: 2rem;
+            height: 2rem;
+            border: 1px solid var(--gray-300);
+            border-radius: 50%;
+            background-color: var(--white);
+            color: var(--gray-600);
+            font-size: 1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .quantity-btn:hover {
+            background-color: var(--gray-100);
+            border-color: var(--gray-400);
+        }
+        .quantity-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .quantity-input {
+            width: 3rem;
+            height: 2rem;
+            text-align: center;
+            border: 1px solid var(--gray-300);
+            border-radius: 0.25rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            outline: none;
+        }
+        .quantity-input:focus {
+            border-color: var(--cyan-500);
         }
         .btn-add-to-cart {
             width: 100%;
@@ -788,7 +834,7 @@
             position: fixed;
             top: 20px;
             right: -400px; /* Start off-screen */
-            background-color: var(--cyan-500);
+            background-color: var(--green-500);
             color: var(--white);
             padding: 1rem 1.5rem;
             border-radius: 0.5rem;
@@ -796,9 +842,15 @@
             z-index: 1000;
             transition: right 0.5s ease-in-out;
             font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
         .toast.show {
             right: 20px; /* Slide in */
+        }
+        .toast.login {
+            background-color: var(--cyan-500);
         }
         
         /* --- Checkout Page --- */
@@ -1180,7 +1232,12 @@
                             <p class="product-price">$30.00</p>
                         </div>
                         <div class="add-to-cart-overlay">
-                            <button class="btn-add-to-cart">Add to Cart</button>
+                            <div class="quantity-selector">
+                                <button class="quantity-btn" onclick="updateQuantity(this, -1)">−</button>
+                                <input type="number" class="quantity-input" value="1" min="1" max="99" readonly>
+                                <button class="quantity-btn" onclick="updateQuantity(this, 1)">+</button>
+                            </div>
+                            <button class="btn-add-to-cart" onclick="addToCart(this)">Add to Cart</button>
                         </div>
                     </div>
                     <div class="product-card">
@@ -1192,7 +1249,12 @@
                             <p class="product-price">$45.00</p>
                         </div>
                         <div class="add-to-cart-overlay">
-                            <button class="btn-add-to-cart">Add to Cart</button>
+                            <div class="quantity-selector">
+                                <button class="quantity-btn" onclick="updateQuantity(this, -1)">−</button>
+                                <input type="number" class="quantity-input" value="1" min="1" max="99" readonly>
+                                <button class="quantity-btn" onclick="updateQuantity(this, 1)">+</button>
+                            </div>
+                            <button class="btn-add-to-cart" onclick="addToCart(this)">Add to Cart</button>
                         </div>
                     </div>
                     <div class="product-card">
@@ -1204,7 +1266,12 @@
                             <p class="product-price">$70.00</p>
                         </div>
                         <div class="add-to-cart-overlay">
-                            <button class="btn-add-to-cart">Add to Cart</button>
+                            <div class="quantity-selector">
+                                <button class="quantity-btn" onclick="updateQuantity(this, -1)">−</button>
+                                <input type="number" class="quantity-input" value="1" min="1" max="99" readonly>
+                                <button class="quantity-btn" onclick="updateQuantity(this, 1)">+</button>
+                            </div>
+                            <button class="btn-add-to-cart" onclick="addToCart(this)">Add to Cart</button>
                         </div>
                     </div>
                     <div class="product-card">
@@ -1216,7 +1283,12 @@
                             <p class="product-price">$45.99</p>
                         </div>
                         <div class="add-to-cart-overlay">
-                            <button class="btn-add-to-cart">Add to Cart</button>
+                            <div class="quantity-selector">
+                                <button class="quantity-btn" onclick="updateQuantity(this, -1)">−</button>
+                                <input type="number" class="quantity-input" value="1" min="1" max="99" readonly>
+                                <button class="quantity-btn" onclick="updateQuantity(this, 1)">+</button>
+                            </div>
+                            <button class="btn-add-to-cart" onclick="addToCart(this)">Add to Cart</button>
                         </div>
                     </div>
                     <div class="product-card">
@@ -1228,7 +1300,12 @@
                             <p class="product-price">$36.99</p>
                         </div>
                         <div class="add-to-cart-overlay">
-                            <button class="btn-add-to-cart">Add to Cart</button>
+                            <div class="quantity-selector">
+                                <button class="quantity-btn" onclick="updateQuantity(this, -1)">−</button>
+                                <input type="number" class="quantity-input" value="1" min="1" max="99" readonly>
+                                <button class="quantity-btn" onclick="updateQuantity(this, 1)">+</button>
+                            </div>
+                            <button class="btn-add-to-cart" onclick="addToCart(this)">Add to Cart</button>
                         </div>
                     </div>
                     <div class="product-card">
@@ -1240,7 +1317,12 @@
                             <p class="product-price">$30.00</p>
                         </div>
                         <div class="add-to-cart-overlay">
-                            <button class="btn-add-to-cart">Add to Cart</button>
+                            <div class="quantity-selector">
+                                <button class="quantity-btn" onclick="updateQuantity(this, -1)">−</button>
+                                <input type="number" class="quantity-input" value="1" min="1" max="99" readonly>
+                                <button class="quantity-btn" onclick="updateQuantity(this, 1)">+</button>
+                            </div>
+                            <button class="btn-add-to-cart" onclick="addToCart(this)">Add to Cart</button>
                         </div>
                     </div>
                     </div>
@@ -1258,7 +1340,12 @@
                             <p class="product-price">$5.00</p>
                         </div>
                         <div class="add-to-cart-overlay">
-                            <button class="btn-add-to-cart">Add to Cart</button>
+                            <div class="quantity-selector">
+                                <button class="quantity-btn" onclick="updateQuantity(this, -1)">−</button>
+                                <input type="number" class="quantity-input" value="1" min="1" max="99" readonly>
+                                <button class="quantity-btn" onclick="updateQuantity(this, 1)">+</button>
+                            </div>
+                            <button class="btn-add-to-cart" onclick="addToCart(this)">Add to Cart</button>
                         </div>
                     </div>
                     <div class="product-card">
@@ -1270,7 +1357,12 @@
                             <p class="product-price">$10.00</p>
                         </div>
                         <div class="add-to-cart-overlay">
-                            <button class="btn-add-to-cart">Add to Cart</button>
+                            <div class="quantity-selector">
+                                <button class="quantity-btn" onclick="updateQuantity(this, -1)">−</button>
+                                <input type="number" class="quantity-input" value="1" min="1" max="99" readonly>
+                                <button class="quantity-btn" onclick="updateQuantity(this, 1)">+</button>
+                            </div>
+                            <button class="btn-add-to-cart" onclick="addToCart(this)">Add to Cart</button>
                         </div>
                     </div>
                     <div class="product-card">
@@ -1282,7 +1374,12 @@
                             <p class="product-price">$10.00</p>
                         </div>
                         <div class="add-to-cart-overlay">
-                            <button class="btn-add-to-cart">Add to Cart</button>
+                            <div class="quantity-selector">
+                                <button class="quantity-btn" onclick="updateQuantity(this, -1)">−</button>
+                                <input type="number" class="quantity-input" value="1" min="1" max="99" readonly>
+                                <button class="quantity-btn" onclick="updateQuantity(this, 1)">+</button>
+                            </div>
+                            <button class="btn-add-to-cart" onclick="addToCart(this)">Add to Cart</button>
                         </div>
                     </div>
                     <div class="product-card">
@@ -1294,7 +1391,12 @@
                             <p class="product-price">$8.00</p>
                         </div>
                         <div class="add-to-cart-overlay">
-                            <button class="btn-add-to-cart">Add to Cart</button>
+                            <div class="quantity-selector">
+                                <button class="quantity-btn" onclick="updateQuantity(this, -1)">−</button>
+                                <input type="number" class="quantity-input" value="1" min="1" max="99" readonly>
+                                <button class="quantity-btn" onclick="updateQuantity(this, 1)">+</button>
+                            </div>
+                            <button class="btn-add-to-cart" onclick="addToCart(this)">Add to Cart</button>
                         </div>
                     </div>
                     <div class="product-card">
@@ -1306,7 +1408,12 @@
                             <p class="product-price">$7 .00</p>
                         </div>
                         <div class="add-to-cart-overlay">
-                            <button class="btn-add-to-cart">Add to Cart</button>
+                            <div class="quantity-selector">
+                                <button class="quantity-btn" onclick="updateQuantity(this, -1)">−</button>
+                                <input type="number" class="quantity-input" value="1" min="1" max="99" readonly>
+                                <button class="quantity-btn" onclick="updateQuantity(this, 1)">+</button>
+                            </div>
+                            <button class="btn-add-to-cart" onclick="addToCart(this)">Add to Cart</button>
                         </div>
                     </div>
                     <div class="product-card">
@@ -1318,7 +1425,12 @@
                             <p class="product-price">$5.00</p>
                         </div>
                         <div class="add-to-cart-overlay">
-                            <button class="btn-add-to-cart">Add to Cart</button>
+                            <div class="quantity-selector">
+                                <button class="quantity-btn" onclick="updateQuantity(this, -1)">−</button>
+                                <input type="number" class="quantity-input" value="1" min="1" max="99" readonly>
+                                <button class="quantity-btn" onclick="updateQuantity(this, 1)">+</button>
+                            </div>
+                            <button class="btn-add-to-cart" onclick="addToCart(this)">Add to Cart</button>
                         </div>
                     </div>
                     </div>
@@ -1336,7 +1448,12 @@
                             <p class="product-price">$20.00</p>
                         </div>
                         <div class="add-to-cart-overlay">
-                            <button class="btn-add-to-cart">Add to Cart</button>
+                            <div class="quantity-selector">
+                                <button class="quantity-btn" onclick="updateQuantity(this, -1)">−</button>
+                                <input type="number" class="quantity-input" value="1" min="1" max="99" readonly>
+                                <button class="quantity-btn" onclick="updateQuantity(this, 1)">+</button>
+                            </div>
+                            <button class="btn-add-to-cart" onclick="addToCart(this)">Add to Cart</button>
                         </div>
                     </div>
                     <div class="product-card">
@@ -1348,7 +1465,12 @@
                             <p class="product-price">$14.99</p>
                         </div>
                         <div class="add-to-cart-overlay">
-                            <button class="btn-add-to-cart">Add to Cart</button>
+                            <div class="quantity-selector">
+                                <button class="quantity-btn" onclick="updateQuantity(this, -1)">−</button>
+                                <input type="number" class="quantity-input" value="1" min="1" max="99" readonly>
+                                <button class="quantity-btn" onclick="updateQuantity(this, 1)">+</button>
+                            </div>
+                            <button class="btn-add-to-cart" onclick="addToCart(this)">Add to Cart</button>
                         </div>
                     </div>
                     <div class="product-card">
@@ -1360,7 +1482,12 @@
                             <p class="product-price">$14.99</p>
                         </div>
                         <div class="add-to-cart-overlay">
-                            <button class="btn-add-to-cart">Add to Cart</button>
+                            <div class="quantity-selector">
+                                <button class="quantity-btn" onclick="updateQuantity(this, -1)">−</button>
+                                <input type="number" class="quantity-input" value="1" min="1" max="99" readonly>
+                                <button class="quantity-btn" onclick="updateQuantity(this, 1)">+</button>
+                            </div>
+                            <button class="btn-add-to-cart" onclick="addToCart(this)">Add to Cart</button>
                         </div>
                     </div>
                     <div class="product-card">
@@ -1372,7 +1499,12 @@
                             <p class="product-price">$16.99</p>
                         </div>
                         <div class="add-to-cart-overlay">
-                            <button class="btn-add-to-cart">Add to Cart</button>
+                            <div class="quantity-selector">
+                                <button class="quantity-btn" onclick="updateQuantity(this, -1)">−</button>
+                                <input type="number" class="quantity-input" value="1" min="1" max="99" readonly>
+                                <button class="quantity-btn" onclick="updateQuantity(this, 1)">+</button>
+                            </div>
+                            <button class="btn-add-to-cart" onclick="addToCart(this)">Add to Cart</button>
                         </div>
                     </div>
                     <div class="product-card">
@@ -1384,7 +1516,12 @@
                             <p class="product-price">$13.99</p>
                         </div>
                         <div class="add-to-cart-overlay">
-                            <button class="btn-add-to-cart">Add to Cart</button>
+                            <div class="quantity-selector">
+                                <button class="quantity-btn" onclick="updateQuantity(this, -1)">−</button>
+                                <input type="number" class="quantity-input" value="1" min="1" max="99" readonly>
+                                <button class="quantity-btn" onclick="updateQuantity(this, 1)">+</button>
+                            </div>
+                            <button class="btn-add-to-cart" onclick="addToCart(this)">Add to Cart</button>
                         </div>
                     </div>
                     <div class="product-card">
@@ -1396,7 +1533,12 @@
                             <p class="product-price">$13.99</p>
                         </div>
                         <div class="add-to-cart-overlay">
-                            <button class="btn-add-to-cart">Add to Cart</button>
+                            <div class="quantity-selector">
+                                <button class="quantity-btn" onclick="updateQuantity(this, -1)">−</button>
+                                <input type="number" class="quantity-input" value="1" min="1" max="99" readonly>
+                                <button class="quantity-btn" onclick="updateQuantity(this, 1)">+</button>
+                            </div>
+                            <button class="btn-add-to-cart" onclick="addToCart(this)">Add to Cart</button>
                         </div>
                     </div>
                     </div>
@@ -1414,7 +1556,12 @@
                             <p class="product-price">$1.99</p>
                         </div>
                         <div class="add-to-cart-overlay">
-                            <button class="btn-add-to-cart">Add to Cart</button>
+                            <div class="quantity-selector">
+                                <button class="quantity-btn" onclick="updateQuantity(this, -1)">−</button>
+                                <input type="number" class="quantity-input" value="1" min="1" max="99" readonly>
+                                <button class="quantity-btn" onclick="updateQuantity(this, 1)">+</button>
+                            </div>
+                            <button class="btn-add-to-cart" onclick="addToCart(this)">Add to Cart</button>
                         </div>
                     </div>
                     <div class="product-card">
@@ -1426,7 +1573,12 @@
                             <p class="product-price">$1.99</p>
                         </div>
                         <div class="add-to-cart-overlay">
-                            <button class="btn-add-to-cart">Add to Cart</button>
+                            <div class="quantity-selector">
+                                <button class="quantity-btn" onclick="updateQuantity(this, -1)">−</button>
+                                <input type="number" class="quantity-input" value="1" min="1" max="99" readonly>
+                                <button class="quantity-btn" onclick="updateQuantity(this, 1)">+</button>
+                            </div>
+                            <button class="btn-add-to-cart" onclick="addToCart(this)">Add to Cart</button>
                         </div>
                     </div>
                     <div class="product-card">
@@ -1438,7 +1590,12 @@
                             <p class="product-price">$1.99</p>
                         </div>
                         <div class="add-to-cart-overlay">
-                            <button class="btn-add-to-cart">Add to Cart</button>
+                            <div class="quantity-selector">
+                                <button class="quantity-btn" onclick="updateQuantity(this, -1)">−</button>
+                                <input type="number" class="quantity-input" value="1" min="1" max="99" readonly>
+                                <button class="quantity-btn" onclick="updateQuantity(this, 1)">+</button>
+                            </div>
+                            <button class="btn-add-to-cart" onclick="addToCart(this)">Add to Cart</button>
                         </div>
                     </div>
                     <div class="product-card">
@@ -1450,7 +1607,12 @@
                             <p class="product-price">$1.99</p>
                         </div>
                         <div class="add-to-cart-overlay">
-                            <button class="btn-add-to-cart">Add to Cart</button>
+                            <div class="quantity-selector">
+                                <button class="quantity-btn" onclick="updateQuantity(this, -1)">−</button>
+                                <input type="number" class="quantity-input" value="1" min="1" max="99" readonly>
+                                <button class="quantity-btn" onclick="updateQuantity(this, 1)">+</button>
+                            </div>
+                            <button class="btn-add-to-cart" onclick="addToCart(this)">Add to Cart</button>
                         </div>
                     </div>
                     <div class="product-card">
@@ -1462,7 +1624,12 @@
                             <p class="product-price">$1.99</p>
                         </div>
                         <div class="add-to-cart-overlay">
-                            <button class="btn-add-to-cart">Add to Cart</button>
+                            <div class="quantity-selector">
+                                <button class="quantity-btn" onclick="updateQuantity(this, -1)">−</button>
+                                <input type="number" class="quantity-input" value="1" min="1" max="99" readonly>
+                                <button class="quantity-btn" onclick="updateQuantity(this, 1)">+</button>
+                            </div>
+                            <button class="btn-add-to-cart" onclick="addToCart(this)">Add to Cart</button>
                         </div>
                     </div>
                     <div class="product-card">
@@ -1474,7 +1641,12 @@
                             <p class="product-price">$1.99</p>
                         </div>
                         <div class="add-to-cart-overlay">
-                            <button class="btn-add-to-cart">Add to Cart</button>
+                            <div class="quantity-selector">
+                                <button class="quantity-btn" onclick="updateQuantity(this, -1)">−</button>
+                                <input type="number" class="quantity-input" value="1" min="1" max="99" readonly>
+                                <button class="quantity-btn" onclick="updateQuantity(this, 1)">+</button>
+                            </div>
+                            <button class="btn-add-to-cart" onclick="addToCart(this)">Add to Cart</button>
                         </div>
                     </div>
                     </div>
@@ -1492,7 +1664,12 @@
                             <p class="product-price">$3.99</p>
                         </div>
                         <div class="add-to-cart-overlay">
-                            <button class="btn-add-to-cart">Add to Cart</button>
+                            <div class="quantity-selector">
+                                <button class="quantity-btn" onclick="updateQuantity(this, -1)">−</button>
+                                <input type="number" class="quantity-input" value="1" min="1" max="99" readonly>
+                                <button class="quantity-btn" onclick="updateQuantity(this, 1)">+</button>
+                            </div>
+                            <button class="btn-add-to-cart" onclick="addToCart(this)">Add to Cart</button>
                         </div>
                     </div>
                     <div class="product-card">
@@ -1504,7 +1681,12 @@
                             <p class="product-price">$3.99</p>
                         </div>
                         <div class="add-to-cart-overlay">
-                            <button class="btn-add-to-cart">Add to Cart</button>
+                            <div class="quantity-selector">
+                                <button class="quantity-btn" onclick="updateQuantity(this, -1)">−</button>
+                                <input type="number" class="quantity-input" value="1" min="1" max="99" readonly>
+                                <button class="quantity-btn" onclick="updateQuantity(this, 1)">+</button>
+                            </div>
+                            <button class="btn-add-to-cart" onclick="addToCart(this)">Add to Cart</button>
                         </div>
                     </div>
                     <div class="product-card">
@@ -1516,7 +1698,12 @@
                             <p class="product-price">$3.99</p>
                         </div>
                         <div class="add-to-cart-overlay">
-                            <button class="btn-add-to-cart">Add to Cart</button>
+                            <div class="quantity-selector">
+                                <button class="quantity-btn" onclick="updateQuantity(this, -1)">−</button>
+                                <input type="number" class="quantity-input" value="1" min="1" max="99" readonly>
+                                <button class="quantity-btn" onclick="updateQuantity(this, 1)">+</button>
+                            </div>
+                            <button class="btn-add-to-cart" onclick="addToCart(this)">Add to Cart</button>
                         </div>
                     </div>
                     <div class="product-card">
@@ -1528,7 +1715,12 @@
                             <p class="product-price">$3.99</p>
                         </div>
                         <div class="add-to-cart-overlay">
-                            <button class="btn-add-to-cart">Add to Cart</button>
+                            <div class="quantity-selector">
+                                <button class="quantity-btn" onclick="updateQuantity(this, -1)">−</button>
+                                <input type="number" class="quantity-input" value="1" min="1" max="99" readonly>
+                                <button class="quantity-btn" onclick="updateQuantity(this, 1)">+</button>
+                            </div>
+                            <button class="btn-add-to-cart" onclick="addToCart(this)">Add to Cart</button>
                         </div>
                     </div>
                     <div class="product-card">
@@ -1540,7 +1732,12 @@
                             <p class="product-price">$3.99</p>
                         </div>
                         <div class="add-to-cart-overlay">
-                            <button class="btn-add-to-cart">Add to Cart</button>
+                            <div class="quantity-selector">
+                                <button class="quantity-btn" onclick="updateQuantity(this, -1)">−</button>
+                                <input type="number" class="quantity-input" value="1" min="1" max="99" readonly>
+                                <button class="quantity-btn" onclick="updateQuantity(this, 1)">+</button>
+                            </div>
+                            <button class="btn-add-to-cart" onclick="addToCart(this)">Add to Cart</button>
                         </div>
                     </div>
                     </div>
@@ -1600,7 +1797,7 @@
                 </div>
                 <div class="team-member">
                     <div class="placeholder-img-sq"><img src="wd.jpg" width="160" height="160"></div>
-                    <p>Sofia Nguyen – Web & IT Specialist: Sofia is responsible for maintaining our online platform and digital tools. She’s focused on making your online experience fast, secure, and user-friendly.</p>
+                    <p>Sofia Nguyen – Web & IT Specialist: Sofia is responsible for maintaining our online platform and digital tools. She's focused on making your online experience fast, secure, and user-friendly.</p>
                 </div>
             </div>
 
@@ -1820,7 +2017,12 @@
         </div>
     </footer>
 
-    <div id="toast-notification" class="toast">Login successfully</div>
+    <div id="toast-notification" class="toast">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"/>
+        </svg>
+        <span id="toast-message">Item added to cart successfully!</span>
+    </div>
 
     <div id="discount-modal" class="modal-overlay hidden">
         <div class="modal-content">
@@ -1852,12 +2054,64 @@
         const profileEmailDisplay = document.getElementById('profile-email');
         const profileNicknameDisplay = document.getElementById('profile-nickname');
 
-        function showToast() {
-            const toast = document.getElementById('toast-notification');
+        // --- TOAST ELEMENTS ---
+        const toast = document.getElementById('toast-notification');
+        const toastMessage = document.getElementById('toast-message');
+
+        function showToast(message = 'Item added to cart successfully!', type = 'success') {
+            toastMessage.textContent = message;
+            
+            // Set toast style based on type
+            if (type === 'login') {
+                toast.classList.add('login');
+            } else {
+                toast.classList.remove('login');
+            }
+            
             toast.classList.add('show');
             setTimeout(() => {
                 toast.classList.remove('show');
             }, 3000); // Hide after 3 seconds
+        }
+
+        // --- QUANTITY SELECTOR FUNCTIONS ---
+        function updateQuantity(button, change) {
+            const quantityInput = button.parentElement.querySelector('.quantity-input');
+            let currentValue = parseInt(quantityInput.value);
+            let newValue = currentValue + change;
+            
+            // Ensure value stays within bounds
+            if (newValue < 1) newValue = 1;
+            if (newValue > 99) newValue = 99;
+            
+            quantityInput.value = newValue;
+            
+            // Update button states
+            const minusBtn = button.parentElement.querySelector('.quantity-btn:first-child');
+            const plusBtn = button.parentElement.querySelector('.quantity-btn:last-child');
+            
+            minusBtn.disabled = newValue <= 1;
+            plusBtn.disabled = newValue >= 99;
+        }
+
+        // --- ADD TO CART FUNCTION ---
+        function addToCart(button) {
+            const productCard = button.closest('.product-card');
+            const productName = productCard.querySelector('h3 a').textContent;
+            const quantity = productCard.querySelector('.quantity-input').value;
+            
+            // Show success toast with product info
+            showToast(`${quantity}x ${productName} added to cart!`, 'success');
+            
+            // Optional: Add visual feedback to the button
+            const originalText = button.textContent;
+            button.textContent = 'Added!';
+            button.style.backgroundColor = 'var(--green-500)';
+            
+            setTimeout(() => {
+                button.textContent = originalText;
+                button.style.backgroundColor = 'var(--cyan-500)';
+            }, 1000);
         }
 
         function showPage(pageId, clickedLink) {
@@ -1931,7 +2185,7 @@
                 localStorage.setItem('loggedInUserEmail', userEmail);
                 updateAuthState();
                 showPage('profile');
-                showToast(); 
+                showToast('Login successfully!', 'login'); 
                 emailInput.value = ''; 
                 document.getElementById('signin-password').value = '';
             }
@@ -2020,11 +2274,16 @@
             claimDiscountBtn.textContent = 'Discount Claimed';
         });
 
-
         // Initial setup on page load
         document.addEventListener('DOMContentLoaded', () => {
             showPage('home', document.querySelector('.nav-link[href="#home"]'));
             updateAuthState(); 
+            
+            // Initialize quantity selector button states
+            document.querySelectorAll('.quantity-input').forEach(input => {
+                const minusBtn = input.parentElement.querySelector('.quantity-btn:first-child');
+                minusBtn.disabled = parseInt(input.value) <= 1;
+            });
         });
     </script>
 </body>
