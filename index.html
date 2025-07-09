@@ -65,7 +65,7 @@
             max-width: 100%;
             display: block;
         }
-        
+                
         input, textarea {
             font-family: inherit;
         }
@@ -130,7 +130,6 @@
             .grid-md-2 {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
             }
-
             .grid-md-3 {
                 grid-template-columns: repeat(3, minmax(0, 1fr));
             }
@@ -147,42 +146,51 @@
         .main-header {
             border-bottom: 1px solid var(--gray-200);
         }
+
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 0.75rem 0;
         }
+
         .header-title {
             font-size: 1.5rem;
             font-weight: 700;
             cursor: pointer;
         }
+
         .main-nav {
             display: none; /* Hidden on mobile */
         }
+
         .main-nav a {
             color: var(--gray-600);
             padding-bottom: 0.25rem;
             transition: color 0.2s ease;
         }
+
         .main-nav a:hover {
             color: var(--black);
         }
+
         .main-nav a.active {
             font-weight: 700;
             border-bottom: 2px solid var(--black);
             color: var(--black);
         }
+
         .header-actions {
             display: flex;
             align-items: center;
             gap: 1rem;
         }
+
         .search-bar {
             position: relative;
             display: none; /* Hidden on mobile */
         }
+
         .search-input {
             border: 1px solid var(--gray-300);
             border-radius: 9999px;
@@ -192,9 +200,11 @@
             outline: none;
             transition: box-shadow 0.2s ease;
         }
+
         .search-input:focus {
             box-shadow: 0 0 0 2px var(--gray-300);
         }
+
         .search-icon {
             position: absolute;
             top: 50%;
@@ -205,6 +215,7 @@
             color: var(--gray-400);
             pointer-events: none;
         }
+
         .header-icon {
             width: 1.5rem;
             height: 1.5rem;
@@ -212,9 +223,11 @@
             cursor: pointer;
             transition: color 0.2s ease;
         }
+
         .header-icon:hover {
             color: var(--gray-800);
         }
+
         .btn-login {
             background-color: var(--cyan-500);
             color: var(--white);
@@ -224,12 +237,15 @@
             border-radius: 0.5rem;
             transition: background-color 0.2s ease;
         }
+
         .btn-login:hover {
             background-color: var(--cyan-600);
         }
+
         .mobile-nav {
             padding-bottom: 0.75rem;
         }
+
         .mobile-nav a {
             display: block;
             padding: 0.25rem 0;
@@ -237,14 +253,16 @@
             color: var(--gray-600);
             transition: color 0.2s ease;
         }
+
         .mobile-nav a:hover {
             color: var(--black);
         }
-        
+                
         .auth-header {
             border-bottom: 1px solid var(--gray-200);
             padding: 0.75rem 0;
         }
+
         .auth-header .header-title {
             text-align: center;
         }
@@ -253,20 +271,20 @@
         main {
             padding: 2rem 0;
         }
-        
+                
         .page-title {
             font-size: 1.875rem;
             font-weight: 700;
             margin-bottom: 2rem;
             text-align: center;
         }
-        
+                
         h2.section-title {
             font-size: 1.875rem;
             font-weight: 700;
             margin-bottom: 2rem;
         }
-        
+                
         h3.section-subtitle {
             font-size: 1.5rem;
             font-weight: 700;
@@ -281,20 +299,24 @@
             margin-bottom: 2rem;
             border-radius: 0.5rem;
         }
+
         .promo-banner a {
             font-weight: 700;
             text-decoration: underline;
             margin-left: 0.5rem;
             color: var(--cyan-600);
         }
+
         .promo-banner a:hover {
             color: var(--cyan-700);
         }
+
         .hero-section h2 {
             font-size: 2.25rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
         }
+
         .hero-section .btn-dark {
             background-color: var(--black);
             color: var(--white);
@@ -303,9 +325,11 @@
             font-weight: 600;
             transition: background-color 0.2s ease;
         }
+
         .hero-section .btn-dark:hover {
             background-color: var(--gray-800);
         }
+
         .placeholder-img-lg {
             background-color: var(--gray-200);
             width: 100%;
@@ -313,23 +337,28 @@
             border-radius: 0.5rem;
             overflow: hidden;
         }
+
         .placeholder-img-lg img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             border-radius: 0.5rem;
         }
+
         .latest-item .shop-now-link {
             font-weight: 600;
             text-decoration: underline;
             transition: text-decoration 0.2s ease;
         }
+
         .latest-item:hover .shop-now-link {
             text-decoration: none;
         }
+
         .featured-item {
             text-align: center;
         }
+
         .featured-item .placeholder-img-tall {
              background-color: var(--gray-200);
              width: 100%;
@@ -338,15 +367,17 @@
              margin-bottom: 0.5rem;
              overflow: hidden;
         }
+
         .featured-item .placeholder-img-tall img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
+
         .featured-item p {
             font-weight: 600;
         }
-        
+                
         /* --- Packages Page --- */
         .membership-card {
             border: 1px solid var(--gray-300);
@@ -355,9 +386,11 @@
             text-align: center;
             transition: box-shadow 0.3s ease;
         }
+
         .membership-card:hover {
             box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
         }
+
         .membership-card .placeholder-img-md {
             background-color: var(--gray-200);
             width: 100%;
@@ -366,25 +399,30 @@
             margin-bottom: 1rem;
             overflow: hidden;
         }
+
         .membership-card .placeholder-img-md img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-        .membership-card h3 { 
-            font-size: 1.25rem; 
-            font-weight: 700; 
-        }
-        .membership-card .description { 
-            color: var(--gray-500); 
-            margin: 0.5rem 0; 
-            font-size: 0.875rem; 
-        }
-        .membership-card .price { 
-            font-weight: 700; 
-            font-size: 1.125rem; 
-            margin-bottom: 1rem; 
-        }
+
+        .membership-card h3 {
+             font-size: 1.25rem;
+             font-weight: 700;
+         }
+
+        .membership-card .description {
+             color: var(--gray-500);
+             margin: 0.5rem 0;
+             font-size: 0.875rem;
+         }
+
+        .membership-card .price {
+             font-weight: 700;
+             font-size: 1.125rem;
+             margin-bottom: 1rem;
+         }
+
         .btn-buy {
             background-color: var(--cyan-500);
             color: var(--white);
@@ -393,31 +431,39 @@
             border-radius: 0.5rem;
             transition: background-color 0.2s ease;
         }
-        .btn-buy:hover { 
-            background-color: var(--cyan-600); 
-        }
-        .discount-card { 
-            border-radius: 0.5rem; 
-            padding: 1.5rem; 
-        }
-        .discount-card h3 { 
-            font-size: 1.25rem; 
-            font-weight: 700; 
-            margin-bottom: 0.5rem; 
-        }
-        .discount-card p { 
-            margin-bottom: 1rem; 
-        }
-        .discount-card.light { 
-            background-color: var(--gray-100); 
-        }
-        .discount-card.dark { 
-            background-color: var(--gray-700); 
-            color: var(--white); 
-        }
-        .discount-card.dark p { 
-            color: var(--gray-300); 
-        }
+
+        .btn-buy:hover {
+             background-color: var(--cyan-600);
+         }
+
+        .discount-card {
+             border-radius: 0.5rem;
+             padding: 1.5rem;
+         }
+
+        .discount-card h3 {
+             font-size: 1.25rem;
+             font-weight: 700;
+             margin-bottom: 0.5rem;
+         }
+
+        .discount-card p {
+             margin-bottom: 1rem;
+         }
+
+        .discount-card.light {
+             background-color: var(--gray-100);
+         }
+
+        .discount-card.dark {
+             background-color: var(--gray-700);
+             color: var(--white);
+         }
+
+        .discount-card.dark p {
+             color: var(--gray-300);
+         }
+
         .btn-claim {
             background-color: var(--cyan-500);
             color: var(--white);
@@ -425,12 +471,199 @@
             border-radius: 0.5rem;
             transition: background-color 0.2s ease;
         }
-        .btn-claim:hover { 
-            background-color: var(--cyan-600); 
-        }
+
+        .btn-claim:hover {
+             background-color: var(--cyan-600);
+         }
+
         .btn-claim:disabled {
             background-color: var(--gray-400);
             cursor: not-allowed;
+        }
+
+        /* --- CUSTOM PACKAGE STYLES --- */
+        .custom-package-card {
+            position: relative;
+            border: 1px solid var(--gray-200);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            text-align: center;
+            background-color: var(--white);
+            transition: all 0.3s ease;
+            box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1), 0 1px 2px 0 rgba(0,0,0,0.06);
+        }
+
+        .custom-package-card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+            transform: translateY(-2px);
+        }
+
+        .custom-package-card.popular {
+            border-color: var(--cyan-500);
+            box-shadow: 0 4px 6px -1px rgba(6, 182, 212, 0.1), 0 2px 4px -1px rgba(6, 182, 212, 0.06);
+            transform: scale(1.02);
+        }
+
+        .custom-package-badge {
+            position: absolute;
+            top: -0.75rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--cyan-500);
+            color: var(--white);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .custom-package-badge.orange {
+            background-color: var(--orange-500);
+        }
+
+        .custom-package-badge.green {
+            background-color: var(--green-500);
+        }
+
+        .custom-package-icon {
+            width: 3rem;
+            height: 3rem;
+            background-color: var(--gray-100);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: var(--cyan-500);
+        }
+
+        .custom-package-icon.orange {
+            background-color: var(--orange-100);
+            color: var(--orange-500);
+        }
+
+        .custom-package-icon.green {
+            background-color: #dcfce7;
+            color: var(--green-500);
+        }
+
+        .custom-package-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--gray-900);
+        }
+
+        .custom-package-description {
+            color: var(--gray-600);
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+
+        .custom-package-pricing {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .custom-package-original-price {
+            font-size: 1rem;
+            color: var(--gray-400);
+            text-decoration: line-through;
+        }
+
+        .custom-package-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--gray-900);
+        }
+
+        .custom-package-period {
+            color: var(--gray-600);
+            font-size: 0.875rem;
+        }
+
+        .custom-package-savings {
+            color: var(--green-500);
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .custom-package-features {
+            text-align: left;
+            margin-bottom: 1.5rem;
+        }
+
+        .custom-package-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+            font-size: 0.875rem;
+        }
+
+        .custom-package-feature-icon {
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 0.125rem;
+        }
+
+        .custom-package-feature-icon.included {
+            background-color: #dcfce7;
+            color: var(--green-500);
+        }
+
+        .custom-package-feature-icon.excluded {
+            background-color: var(--gray-100);
+            color: var(--gray-400);
+        }
+
+        .custom-package-feature-text {
+            color: var(--gray-700);
+        }
+
+        .custom-package-feature-text.excluded {
+            color: var(--gray-400);
+        }
+
+        .custom-package-button {
+            width: 100%;
+            background-color: var(--cyan-500);
+            color: var(--white);
+            font-weight: 600;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            transition: all 0.2s ease;
+            font-size: 0.875rem;
+        }
+
+        .custom-package-button:hover {
+            background-color: var(--cyan-600);
+            transform: scale(1.02);
+        }
+
+        .custom-package-button.orange {
+            background-color: var(--orange-500);
+        }
+
+        .custom-package-button.orange:hover {
+            background-color: var(--orange-600);
+        }
+
+        .custom-package-button.green {
+            background-color: var(--green-500);
+        }
+
+        .custom-package-button.green:hover {
+            background-color: #059669;
         }
 
         /* --- Products Page --- */
@@ -442,15 +675,18 @@
             box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1), 0 1px 2px 0 rgba(0,0,0,0.06);
             transition: box-shadow 0.3s ease;
         }
+
         .product-card:hover {
             box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
         }
+
         .product-image-container {
             width: 100%;
             padding-top: 100%; /* 1:1 Aspect Ratio */
             position: relative;
             background-color: var(--gray-200);
         }
+
         .product-image {
             position: absolute;
             top: 0;
@@ -460,27 +696,33 @@
             object-fit: cover;
             transition: opacity 0.3s ease;
         }
+
         .product-card:hover .product-image {
             opacity: 0.8;
         }
+
         .product-info {
             padding: 1rem;
         }
-        .product-info h3 { 
-            font-size: 0.875rem; 
-            color: var(--gray-700); 
-            font-weight: 500; 
-        }
-        .product-info a { 
-            position: absolute; 
-            inset: 0; 
-        }
-        .product-price { 
-            font-size: 1.125rem; 
-            font-weight: 600; 
-            color: var(--gray-900); 
-            margin-top: 0.25rem; 
-        }
+
+        .product-info h3 {
+             font-size: 0.875rem;
+             color: var(--gray-700);
+             font-weight: 500;
+         }
+
+        .product-info a {
+             position: absolute;
+             inset: 0;
+         }
+
+        .product-price {
+             font-size: 1.125rem;
+             font-weight: 600;
+             color: var(--gray-900);
+             margin-top: 0.25rem;
+         }
+
         .add-to-cart-overlay {
             position: absolute;
             bottom: 0;
@@ -492,6 +734,7 @@
             transform: translateY(100%);
             transition: transform 0.3s ease-in-out;
         }
+
         .product-card:hover .add-to-cart-overlay {
             transform: translateY(0);
         }
@@ -504,6 +747,7 @@
             gap: 0.5rem;
             margin-bottom: 0.75rem;
         }
+
         .quantity-btn {
             width: 2rem;
             height: 2rem;
@@ -519,14 +763,17 @@
             cursor: pointer;
             transition: all 0.2s ease;
         }
+
         .quantity-btn:hover {
             background-color: var(--gray-100);
             border-color: var(--gray-400);
         }
+
         .quantity-btn:disabled {
             opacity: 0.5;
             cursor: not-allowed;
         }
+
         .quantity-input {
             width: 3rem;
             height: 2rem;
@@ -537,9 +784,11 @@
             font-weight: 600;
             outline: none;
         }
+
         .quantity-input:focus {
             border-color: var(--cyan-500);
         }
+
         .btn-add-to-cart {
             width: 100%;
             background-color: var(--cyan-500);
@@ -550,28 +799,33 @@
             border-radius: 0.375rem;
             transition: background-color 0.2s ease;
         }
-        .btn-add-to-cart:hover { 
-            background-color: var(--cyan-600); 
-        }
+
+        .btn-add-to-cart:hover {
+             background-color: var(--cyan-600);
+         }
 
         /* --- Contact Page --- */
-        .contact-page-content p { 
-            color: var(--gray-600); 
-            line-height: 1.6; 
-            margin-bottom: 3rem; 
-        }
-        .team-intro-title { 
-            font-size: 1.875rem; 
-            font-weight: 700; 
-            text-align: center; 
-            margin-bottom: 1.5rem; 
-        }
-        .team-grid { 
-            margin-bottom: 3rem; 
-        }
-        .team-member { 
-            text-align: center; 
-        }
+        .contact-page-content p {
+             color: var(--gray-600);
+             line-height: 1.6;
+             margin-bottom: 3rem;
+         }
+
+        .team-intro-title {
+             font-size: 1.875rem;
+             font-weight: 700;
+             text-align: center;
+             margin-bottom: 1.5rem;
+         }
+
+        .team-grid {
+             margin-bottom: 3rem;
+         }
+
+        .team-member {
+             text-align: center;
+         }
+
         .team-member .placeholder-img-sq {
             background-color: var(--gray-200);
             width: 10rem;
@@ -579,9 +833,11 @@
             border-radius: 0.5rem;
             margin: 0 auto 1rem;
         }
-        .team-member p { 
-            color: var(--gray-600); 
-        }
+
+        .team-member p {
+             color: var(--gray-600);
+         }
+
         .contact-form-wrapper {
             max-width: 42rem;
             margin: 0 auto;
@@ -589,18 +845,21 @@
             border-radius: 0.5rem;
             padding: 2rem;
         }
-        .form-grid { 
-            display: grid; 
-            gap: 1.5rem; 
-            margin-bottom: 1rem; 
-        }
-        .form-group label { 
-            display: block; 
-            font-size: 0.875rem; 
-            font-weight: 500; 
-            color: var(--gray-700); 
-            margin-bottom: 0.25rem; 
-        }
+
+        .form-grid {
+             display: grid;
+             gap: 1.5rem;
+             margin-bottom: 1rem;
+         }
+
+        .form-group label {
+             display: block;
+             font-size: 0.875rem;
+             font-weight: 500;
+             color: var(--gray-700);
+             margin-bottom: 0.25rem;
+         }
+
         .form-input, .form-textarea {
             width: 100%;
             border: 1px solid var(--gray-300);
@@ -609,23 +868,27 @@
             outline: none;
             transition: border-color 0.2s ease, box-shadow 0.2s ease;
         }
-        .form-input { 
-            padding: 0.5rem 0.75rem; 
-        }
-        .form-textarea { 
-            padding: 0.5rem 0.75rem; 
-            resize: vertical; 
-        }
-        .form-input:focus, .form-textarea:focus { 
-            border-color: var(--cyan-500); 
-            box-shadow: 0 0 0 1px var(--cyan-500); 
-        }
-        .form-hint { 
-            font-size: 0.75rem; 
-            color: var(--gray-500); 
-            margin-bottom: 1rem; 
-        }
-        
+
+        .form-input {
+             padding: 0.5rem 0.75rem;
+         }
+
+        .form-textarea {
+             padding: 0.5rem 0.75rem;
+             resize: vertical;
+         }
+
+        .form-input:focus, .form-textarea:focus {
+             border-color: var(--cyan-500);
+             box-shadow: 0 0 0 1px var(--cyan-500);
+         }
+
+        .form-hint {
+             font-size: 0.75rem;
+             color: var(--gray-500);
+             margin-bottom: 1rem;
+         }
+                
         /* --- Auth Pages (Sign In/Up) --- */
         .auth-form-container {
             max-width: 28rem;
@@ -636,41 +899,50 @@
             box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
             border: 1px solid var(--gray-200);
         }
-        .auth-form-container h2 { 
-            text-align: center; 
-            font-size: 1.875rem; 
-            font-weight: 700; 
-            margin-bottom: 1.5rem; 
-        }
-        .auth-form-container .form-input { 
-            border-width: 2px; 
-            border-color: var(--gray-400); 
-        }
-        .auth-form-container .form-group { 
-            margin-bottom: 1rem; 
-        }
-        .terms-group { 
-            display: flex; 
-            align-items: center; 
-            margin-bottom: 1.5rem; 
-        }
-        .terms-group input { 
-            height: 1rem; 
-            width: 1rem; 
-            border-radius: 0.25rem; 
-        }
-        .terms-group label { 
-            margin-left: 0.5rem; 
-            font-size: 0.875rem; 
-            color: var(--gray-600); 
-        }
-        .terms-group a { 
-            color: var(--cyan-600); 
-            font-weight: 600; 
-        }
-        .terms-group a:hover { 
-            text-decoration: underline; 
-        }
+
+        .auth-form-container h2 {
+             text-align: center;
+             font-size: 1.875rem;
+             font-weight: 700;
+             margin-bottom: 1.5rem;
+         }
+
+        .auth-form-container .form-input {
+             border-width: 2px;
+             border-color: var(--gray-400);
+         }
+
+        .auth-form-container .form-group {
+             margin-bottom: 1rem;
+         }
+
+        .terms-group {
+             display: flex;
+             align-items: center;
+             margin-bottom: 1.5rem;
+         }
+
+        .terms-group input {
+             height: 1rem;
+             width: 1rem;
+             border-radius: 0.25rem;
+         }
+
+        .terms-group label {
+             margin-left: 0.5rem;
+             font-size: 0.875rem;
+             color: var(--gray-600);
+         }
+
+        .terms-group a {
+             color: var(--cyan-600);
+             font-weight: 600;
+         }
+
+        .terms-group a:hover {
+             text-decoration: underline;
+         }
+
         .btn-submit {
             width: 100%;
             background-color: var(--black);
@@ -680,29 +952,35 @@
             border-radius: 0.5rem;
             transition: background-color 0.2s ease;
         }
-        .btn-submit:hover { 
-            background-color: var(--gray-800); 
-        }
+
+        .btn-submit:hover {
+             background-color: var(--gray-800);
+         }
+
         .divider {
             display: flex;
             align-items: center;
             margin: 1.5rem 0;
         }
+
         .divider-line {
             flex-grow: 1;
             border-top: 1px solid var(--gray-300);
         }
+
         .divider-text {
             padding: 0 1rem;
             font-size: 0.875rem;
             color: var(--gray-500);
         }
-        .social-signup { 
-            display: flex; 
-            justify-content: center; 
-            gap: 1rem; 
-            margin-bottom: 1.5rem; 
-        }
+
+        .social-signup {
+             display: flex;
+             justify-content: center;
+             gap: 1rem;
+             margin-bottom: 1.5rem;
+         }
+
         .social-btn {
             width: 3rem;
             height: 3rem;
@@ -715,38 +993,47 @@
             font-weight: 700;
             transition: background-color 0.2s ease;
         }
-        .social-btn-f { 
-            border-color: var(--cyan-500); 
-            color: var(--cyan-500); 
-        }
+
+        .social-btn-f {
+             border-color: var(--cyan-500);
+             color: var(--cyan-500);
+         }
+
         .social-btn-f:hover {
             background-color: #ecfeff;
         }
-        .social-btn-g { 
-            border-color: #fbbf24; 
-            color: #fbbf24; 
-        }
+
+        .social-btn-g {
+             border-color: #fbbf24;
+             color: #fbbf24;
+         }
+
         .social-btn-g:hover {
             background-color: #fef3c7;
         }
-        .social-btn-l { 
-            border-color: #4ade80; 
-            color: #4ade80; 
-        }
+
+        .social-btn-l {
+             border-color: #4ade80;
+             color: #4ade80;
+         }
+
         .social-btn-l:hover {
             background-color: #dcfce7;
         }
-        .auth-redirect { 
-            text-align: center; 
-            font-size: 0.875rem; 
-        }
-        .auth-redirect a { 
-            font-weight: 700; 
-        }
-        .auth-redirect a:hover { 
-            text-decoration: underline; 
-        }
-        
+
+        .auth-redirect {
+             text-align: center;
+             font-size: 0.875rem;
+         }
+
+        .auth-redirect a {
+             font-weight: 700;
+         }
+
+        .auth-redirect a:hover {
+             text-decoration: underline;
+         }
+                
         /* --- Profile Page --- */
         .profile-card {
             max-width: 24rem;
@@ -757,18 +1044,21 @@
             box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
             border: 1px solid var(--orange-200);
         }
-        .profile-header { 
-            position: relative; 
-            margin-bottom: 1rem; 
-        }
-        .profile-banner { 
-            height: 6rem; 
-            width: 12rem; 
-            background-color: var(--white); 
-            border-top-left-radius: 0.5rem; 
-            border-top-right-radius: 0.5rem; 
-            margin: 0 auto; 
-        }
+
+        .profile-header {
+             position: relative;
+             margin-bottom: 1rem;
+         }
+
+        .profile-banner {
+             height: 6rem;
+             width: 12rem;
+             background-color: var(--white);
+             border-top-left-radius: 0.5rem;
+             border-top-right-radius: 0.5rem;
+             margin: 0 auto;
+         }
+
         .profile-avatar {
             position: absolute;
             top: 3rem;
@@ -780,15 +1070,18 @@
             border-radius: 9999px;
             border: 4px solid var(--orange-100);
         }
-        .profile-body { 
-            text-align: center; 
-            padding-top: 2rem; 
-        }
-        .profile-body h3 { 
-            font-weight: 700; 
-            font-size: 1.25rem; 
-            margin-bottom: 0.5rem; 
-        }
+
+        .profile-body {
+             text-align: center;
+             padding-top: 2rem;
+         }
+
+        .profile-body h3 {
+             font-weight: 700;
+             font-size: 1.25rem;
+             margin-bottom: 0.5rem;
+         }
+
         .btn-edit-profile {
             background-color: var(--white);
             color: var(--orange-500);
@@ -800,14 +1093,17 @@
             margin-bottom: 1.5rem;
             transition: background-color 0.2s ease;
         }
-        .btn-edit-profile:hover { 
-            background-color: #fff7ed; 
-        }
-        .profile-actions { 
-            display: flex; 
-            flex-direction: column; 
-            gap: 0.75rem; 
-        }
+
+        .btn-edit-profile:hover {
+             background-color: #fff7ed;
+         }
+
+        .profile-actions {
+             display: flex;
+             flex-direction: column;
+             gap: 0.75rem;
+         }
+
         .profile-action-btn {
             width: 100%;
             background-color: var(--white);
@@ -818,16 +1114,19 @@
             border: 1px solid var(--gray-200);
             transition: background-color 0.2s ease;
         }
-        .profile-action-btn:hover { 
-            background-color: var(--gray-100); 
-        }
-        .btn-logout { 
-            border-color: var(--red-500); 
-            color: var(--red-500); 
-        }
-        .btn-logout:hover { 
-            background-color: var(--red-50); 
-        }
+
+        .profile-action-btn:hover {
+             background-color: var(--gray-100);
+         }
+
+        .btn-logout {
+             border-color: var(--red-500);
+             color: var(--red-500);
+         }
+
+        .btn-logout:hover {
+             background-color: var(--red-50);
+         }
 
         /* --- Toast Notification --- */
         .toast {
@@ -846,19 +1145,22 @@
             align-items: center;
             gap: 0.5rem;
         }
+
         .toast.show {
             right: 20px; /* Slide in */
         }
+
         .toast.login {
             background-color: var(--cyan-500);
         }
-        
+                
         /* --- Checkout Page --- */
         .checkout-form-container {
             border: 1px solid var(--gray-200);
             border-radius: 0.75rem;
             padding: 2rem;
         }
+
         .order-summary-container {
             border: 1px solid var(--gray-200);
             border-radius: 0.75rem;
@@ -868,6 +1170,7 @@
             position: sticky;
             top: 2rem;
         }
+
         .order-item, .order-total {
             display: flex;
             justify-content: space-between;
@@ -875,13 +1178,16 @@
             margin-bottom: 0.75rem;
             color: var(--gray-800);
         }
+
         .order-item p:first-child {
             font-weight: 600;
         }
+
         .grand-total p {
             font-size: 1.25rem;
             font-weight: 700;
         }
+
         .credit-card-mockup {
             border: 1px solid var(--gray-300);
             border-radius: 0.5rem;
@@ -905,10 +1211,12 @@
             visibility: hidden;
             transition: opacity 0.3s ease, visibility 0.3s ease;
         }
+
         .modal-overlay.show {
             opacity: 1;
             visibility: visible;
         }
+
         .modal-content {
             background-color: var(--white);
             padding: 2rem;
@@ -920,9 +1228,11 @@
             transform: translateY(-50px);
             transition: transform 0.3s ease;
         }
+
         .modal-overlay.show .modal-content {
             transform: translateY(0);
         }
+
         .modal-close {
             position: absolute;
             top: 0.5rem;
@@ -932,11 +1242,12 @@
             color: var(--gray-400);
             line-height: 1;
         }
+
         .modal-close:hover {
             color: var(--gray-800);
         }
-        /* --- END: ADDED FOR DISCOUNT MODAL --- */
 
+        /* --- END: ADDED FOR DISCOUNT MODAL --- */
 
         /* --- Footer --- */
         .main-footer {
@@ -944,44 +1255,53 @@
             margin-top: 3rem;
             padding: 2rem 0;
         }
-        .main-footer .footer-content { 
-            display: grid; 
-            gap: 2rem; 
-            align-items: center; 
+
+        .main-footer .footer-content {
+             display: grid;
+             gap: 2rem;
+             align-items: center;
+         }
+
+        .footer-about h4 {
+             font-weight: 700;
+             font-size: 1.125rem;
+         }
+
+        .footer-about p {
+             color: var(--gray-500);
+         }
+
+        .footer-buttons {
+             display: flex;
+             flex-direction: column;
+             gap: 1rem;
+         }
+
+        .btn-footer {
+             padding: 0.75rem;
+             font-weight: 600;
+             border-radius: 0.5rem;
+             flex: 1;
+             transition: background-color 0.2s ease;
         }
-        .footer-about h4 { 
-            font-weight: 700; 
-            font-size: 1.125rem; 
-        }
-        .footer-about p { 
-            color: var(--gray-500); 
-        }
-        .footer-buttons { 
-            display: flex; 
-            flex-direction: column; 
-            gap: 1rem; 
-        }
-        .btn-footer { 
-            padding: 0.75rem; 
-            font-weight: 600; 
-            border-radius: 0.5rem; 
-            flex: 1; 
-            transition: background-color 0.2s ease;
-        }
-        .btn-footer.primary { 
-            background-color: var(--cyan-500); 
-            color: var(--white); 
-        }
-        .btn-footer.primary:hover { 
-            background-color: var(--cyan-600); 
-        }
-        .btn-footer.secondary { 
-            border: 2px solid var(--cyan-500); 
-            color: var(--cyan-500); 
-        }
-        .btn-footer.secondary:hover { 
-            background-color: #ecfeff; 
-        }
+
+        .btn-footer.primary {
+             background-color: var(--cyan-500);
+             color: var(--white);
+         }
+
+        .btn-footer.primary:hover {
+             background-color: var(--cyan-600);
+         }
+
+        .btn-footer.secondary {
+             border: 2px solid var(--cyan-500);
+             color: var(--cyan-500);
+         }
+
+        .btn-footer.secondary:hover {
+             background-color: #ecfeff;
+         }
 
         .contact-footer {
             background-color: var(--orange-400);
@@ -990,48 +1310,49 @@
             padding: 2rem 0;
             text-align: center;
         }
-        .contact-footer h3 { 
-            font-size: 1.5rem; 
-            font-weight: 700; 
-            margin-bottom: 0.5rem; 
-        }
+
+        .contact-footer h3 {
+             font-size: 1.5rem;
+             font-weight: 700;
+             margin-bottom: 0.5rem;
+         }
 
         /* --- Responsive Design --- */
         @media (min-width: 640px) { /* sm */
-            .search-bar { 
-                display: block; 
-            }
-            .footer-buttons { 
-                flex-direction: row; 
-            }
+            .search-bar {
+                 display: block;
+             }
+            .footer-buttons {
+                 flex-direction: row;
+             }
         }
 
         @media (min-width: 768px) { /* md */
-            .main-nav { 
-                display: flex; 
-                align-items: center; 
-                gap: 1.5rem; 
-            }
-            .mobile-nav { 
-                display: none; 
-            }
-            .auth-header .header-title { 
-                text-align: left; 
-            }
-            .main-footer .footer-content { 
-                grid-template-columns: repeat(2, minmax(0, 1fr)); 
-            }
-            .placeholder-img-lg { 
-                height: 20rem; 
-            }
+            .main-nav {
+                 display: flex;
+                 align-items: center;
+                 gap: 1.5rem;
+             }
+            .mobile-nav {
+                 display: none;
+             }
+            .auth-header .header-title {
+                 text-align: left;
+             }
+            .main-footer .footer-content {
+                 grid-template-columns: repeat(2, minmax(0, 1fr));
+             }
+            .placeholder-img-lg {
+                 height: 20rem;
+             }
             .form-grid.grid-md-2 {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
             }
         }
     </style>
 </head>
-<body>
 
+<body>
     <header id="main-header" class="main-header">
         <div class="container">
             <div class="header-content">
@@ -1078,7 +1399,6 @@
             <div class="promo-banner">
                 <p>New Member Get 15% Off <a href="#">Learn More</a></p>
             </div>
-
             <div class="grid grid-md-2 gap-8 items-center hero-section" style="margin-bottom: 3rem;">
                 <div>
                     <h2>Breaking &</h2>
@@ -1089,7 +1409,6 @@
                     <img src="b&f1.jpg" alt="Placeholder Image">
                 </div>
             </div>
-
             <h3 class="section-subtitle">The Latest</h3>
             <div class="grid grid-md-2 gap-8" style="margin-bottom: 3rem;">
                 <div class="latest-item">
@@ -1101,7 +1420,6 @@
                     <a href="#" class="shop-now-link">Shop Now</a>
                 </div>
             </div>
-
             <h3 class="section-subtitle">Featured</h3>
             <div class="grid grid-sm-2 grid-md-3 gap-8">
                 <div class="featured-item">
@@ -1168,11 +1486,221 @@
                     <button class="btn-claim">Follow & Save 20%</button>
                 </div>
             </div>
-            
+
+            <!-- CUSTOM PACKAGES SECTION -->
+            <h2 class="page-title" style="margin-top: 4rem;">Custom Packages</h2>
+            <div class="grid grid-md-3 gap-8" style="margin-bottom: 4rem;">
+                <!-- Starter Package -->
+                <div class="custom-package-card">
+                    <div class="custom-package-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                        </svg>
+                    </div>
+                    <h3 class="custom-package-title">Starter Package</h3>
+                    <p class="custom-package-description">Perfect for individuals getting started with custom printing</p>
+                    <div class="custom-package-pricing">
+                        <span class="custom-package-original-price">$19.99</span>
+                        <span class="custom-package-price">$9.99</span>
+                        <span class="custom-package-period">/month</span>
+                    </div>
+                    <div class="custom-package-savings">Save $10/month!</div>
+                    <div class="custom-package-features">
+                        <div class="custom-package-feature">
+                            <div class="custom-package-feature-icon included">✓</div>
+                            <span class="custom-package-feature-text">Up to 5 custom designs</span>
+                        </div>
+                        <div class="custom-package-feature">
+                            <div class="custom-package-feature-icon included">✓</div>
+                            <span class="custom-package-feature-text">Basic templates access</span>
+                        </div>
+                        <div class="custom-package-feature">
+                            <div class="custom-package-feature-icon included">✓</div>
+                            <span class="custom-package-feature-text">Email support</span>
+                        </div>
+                        <div class="custom-package-feature">
+                            <div class="custom-package-feature-icon excluded">✗</div>
+                            <span class="custom-package-feature-text excluded">Priority support</span>
+                        </div>
+                        <div class="custom-package-feature">
+                            <div class="custom-package-feature-icon excluded">✗</div>
+                            <span class="custom-package-feature-text excluded">Custom branding</span>
+                        </div>
+                    </div>
+                    <button class="custom-package-button" onclick="selectCustomPackage('Starter Package', 9.99)">Select Package</button>
+                </div>
+
+                <!-- Professional Package -->
+                <div class="custom-package-card popular">
+                    <div class="custom-package-badge">Most Popular</div>
+                    <div class="custom-package-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                        </svg>
+                    </div>
+                    <h3 class="custom-package-title">Professional Package</h3>
+                    <p class="custom-package-description">Best for growing businesses and creative professionals</p>
+                    <div class="custom-package-pricing">
+                        <span class="custom-package-original-price">$49.99</span>
+                        <span class="custom-package-price">$29.99</span>
+                        <span class="custom-package-period">/month</span>
+                    </div>
+                    <div class="custom-package-savings">Save $20/month!</div>
+                    <div class="custom-package-features">
+                        <div class="custom-package-feature">
+                            <div class="custom-package-feature-icon included">✓</div>
+                            <span class="custom-package-feature-text">Unlimited custom designs</span>
+                        </div>
+                        <div class="custom-package-feature">
+                            <div class="custom-package-feature-icon included">✓</div>
+                            <span class="custom-package-feature-text">Premium templates access</span>
+                        </div>
+                        <div class="custom-package-feature">
+                            <div class="custom-package-feature-icon included">✓</div>
+                            <span class="custom-package-feature-text">Priority email & chat support</span>
+                        </div>
+                        <div class="custom-package-feature">
+                            <div class="custom-package-feature-icon included">✓</div>
+                            <span class="custom-package-feature-text">HD & 4K downloads</span>
+                        </div>
+                        <div class="custom-package-feature">
+                            <div class="custom-package-feature-icon included">✓</div>
+                            <span class="custom-package-feature-text">Team collaboration tools</span>
+                        </div>
+                    </div>
+                    <button class="custom-package-button" onclick="selectCustomPackage('Professional Package', 29.99)">Select Package</button>
+                </div>
+
+                <!-- Enterprise Package -->
+                <div class="custom-package-card">
+                    <div class="custom-package-badge orange">Enterprise</div>
+                    <div class="custom-package-icon orange">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M2 20h20l-10-18z"/>
+                        </svg>
+                    </div>
+                    <h3 class="custom-package-title">Enterprise Package</h3>
+                    <p class="custom-package-description">Advanced features for large organizations and agencies</p>
+                    <div class="custom-package-pricing">
+                        <span class="custom-package-price">$99.99</span>
+                        <span class="custom-package-period">/month</span>
+                    </div>
+                    <div class="custom-package-features">
+                        <div class="custom-package-feature">
+                            <div class="custom-package-feature-icon included">✓</div>
+                            <span class="custom-package-feature-text">Everything in Professional</span>
+                        </div>
+                        <div class="custom-package-feature">
+                            <div class="custom-package-feature-icon included">✓</div>
+                            <span class="custom-package-feature-text">Custom template creation</span>
+                        </div>
+                        <div class="custom-package-feature">
+                            <div class="custom-package-feature-icon included">✓</div>
+                            <span class="custom-package-feature-text">Dedicated account manager</span>
+                        </div>
+                        <div class="custom-package-feature">
+                            <div class="custom-package-feature-icon included">✓</div>
+                            <span class="custom-package-feature-text">White-label solutions</span>
+                        </div>
+                        <div class="custom-package-feature">
+                            <div class="custom-package-feature-icon included">✓</div>
+                            <span class="custom-package-feature-text">API access & integrations</span>
+                        </div>
+                        <div class="custom-package-feature">
+                            <div class="custom-package-feature-icon included">✓</div>
+                            <span class="custom-package-feature-text">API access & integrations</span>
+                        </div>
+                    </div>
+                    <button class="custom-package-button orange" onclick="selectCustomPackage('Enterprise Package', 99.99)">Select Package</button>
+                </div>
+            </div>
+
+            <!-- Special Offers Section -->
+            <h2 class="page-title">Special Offers</h2>
+            <div class="grid grid-md-2 gap-8" style="margin-bottom: 4rem;">
+                <!-- Student Package -->
+                <div class="custom-package-card">
+                    <div class="custom-package-badge green">Student Discount</div>
+                    <div class="custom-package-icon green">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                            <line x1="16" y1="2" x2="16" y2="6"/>
+                            <line x1="8" y1="2" x2="8" y2="6"/>
+                            <line x1="3" y1="10" x2="21" y2="10"/>
+                        </svg>
+                    </div>
+                    <h3 class="custom-package-title">Student Package</h3>
+                    <p class="custom-package-description">Special pricing for students and educators with valid .edu email</p>
+                    <div class="custom-package-pricing">
+                        <span class="custom-package-original-price">$9.99</span>
+                        <span class="custom-package-price">$4.99</span>
+                        <span class="custom-package-period">/month</span>
+                    </div>
+                    <div class="custom-package-savings">Save 50%!</div>
+                    <div class="custom-package-features">
+                        <div class="custom-package-feature">
+                            <div class="custom-package-feature-icon included">✓</div>
+                            <span class="custom-package-feature-text">All Starter features</span>
+                        </div>
+                        <div class="custom-package-feature">
+                            <div class="custom-package-feature-icon included">✓</div>
+                            <span class="custom-package-feature-text">Educational templates</span>
+                        </div>
+                        <div class="custom-package-feature">
+                            <div class="custom-package-feature-icon included">✓</div>
+                            <span class="custom-package-feature-text">Student verification required</span>
+                        </div>
+                    </div>
+                    <button class="custom-package-button green" onclick="selectCustomPackage('Student Package', 4.99)">Verify & Subscribe</button>
+                </div>
+
+                <!-- Team Bundle -->
+                <div class="custom-package-card">
+                    <div class="custom-package-icon orange">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    </div>
+                    <h3 class="custom-package-title">Team Bundle</h3>
+                    <p class="custom-package-description">Perfect for small teams and agencies working together</p>
+                    <div class="custom-package-pricing">
+                        <span class="custom-package-original-price">$299.99</span>
+                        <span class="custom-package-price">$199.99</span>
+                        <span class="custom-package-period">/year</span>
+                    </div>
+                    <div class="custom-package-savings">Save $100/year!</div>
+                    <div class="custom-package-features">
+                        <div class="custom-package-feature">
+                            <div class="custom-package-feature-icon included">✓</div>
+                            <span class="custom-package-feature-text">Up to 10 team members</span>
+                        </div>
+                        <div class="custom-package-feature">
+                            <div class="custom-package-feature-icon included">✓</div>
+                            <span class="custom-package-feature-text">Shared project workspace</span>
+                        </div>
+                        <div class="custom-package-feature">
+                            <div class="custom-package-feature-icon included">✓</div>
+                            <span class="custom-package-feature-text">Team analytics dashboard</span>
+                        </div>
+                        <div class="custom-package-feature">
+                            <div class="custom-package-feature-icon included">✓</div>
+                            <span class="custom-package-feature-text">Bulk export options</span>
+                        </div>
+                        <div class="custom-package-feature">
+                            <div class="custom-package-feature-icon included">✓</div>
+                            <span class="custom-package-feature-text">Priority phone support</span>
+                        </div>
+                    </div>
+                    <button class="custom-package-button orange" onclick="selectCustomPackage('Team Bundle', 199.99)">Start Team Trial</button>
+                </div>
+            </div>
+
             <h2 class="page-title" style="margin-top: 4rem;">Packages</h2>
             <div class="grid grid-cols-1 gap-y-10">
-    
-                <div class="grid grid-md-2 gap-8 items-center">
+                    <div class="grid grid-md-2 gap-8 items-center">
                     <div>
                         <h3 class="section-subtitle" style="margin-bottom: 1rem; text-align: left;">Party Package</h3>
                         <div style="color: var(--gray-600); margin-bottom: 1.5rem; text-align: left;">
@@ -1784,7 +2312,6 @@
             <p>
                 PaperPrint is your go-to online destination for high-quality printed products. From business materials to personalized gifts, we make printing fast, easy, and reliable. As demand grows, we're upgrading our technology to serve you even better-delivering great results with every order.
             </p>
-
             <h2 class="team-intro-title">My Team Introduction</h2>
             <div class="grid grid-md-3 gap-8 team-grid">
                 <div class="team-member">
@@ -1800,7 +2327,6 @@
                     <p>Sofia Nguyen – Web & IT Specialist: Sofia is responsible for maintaining our online platform and digital tools. She's focused on making your online experience fast, secure, and user-friendly.</p>
                 </div>
             </div>
-
             <div class="contact-form-wrapper">
                 <div class="form-grid grid-md-2">
                     <div class="form-group">
@@ -2009,7 +2535,7 @@
             </div>
         </div>
     </footer>
-    
+        
     <footer id="contact-footer" class="contact-footer hidden">
         <div class="container">
             <h3>Please Follow Us On FACEBOOK, INSTAGRAM, LINE</h3>
@@ -2045,7 +2571,7 @@
         const mainFooter = document.getElementById('main-footer');
         const contactFooter = document.getElementById('contact-footer');
         const navLinks = document.querySelectorAll('.nav-link');
-        
+                
         // --- AUTHENTICATION ELEMENTS ---
         const loginNavBtn = document.getElementById('login-nav-btn');
         const profileIcon = document.getElementById('profile-icon');
@@ -2060,18 +2586,37 @@
 
         function showToast(message = 'Item added to cart successfully!', type = 'success') {
             toastMessage.textContent = message;
-            
+                        
             // Set toast style based on type
             if (type === 'login') {
                 toast.classList.add('login');
             } else {
                 toast.classList.remove('login');
             }
-            
+                        
             toast.classList.add('show');
             setTimeout(() => {
                 toast.classList.remove('show');
             }, 3000); // Hide after 3 seconds
+        }
+
+        // --- CUSTOM PACKAGE SELECTION FUNCTION ---
+        function selectCustomPackage(packageName, price) {
+            showToast(`${packageName} selected! Price: $${price}`, 'success');
+            
+            // Update checkout summary
+            document.getElementById('summary-item-name').textContent = packageName;
+            document.getElementById('summary-item-price').textContent = `$${price.toFixed(2)}`;
+            document.getElementById('summary-subtotal').textContent = `$${price.toFixed(2)}`;
+            
+            const tax = price * 0.07;
+            const total = price + tax;
+            
+            document.getElementById('summary-tax').textContent = `$${tax.toFixed(2)}`;
+            document.getElementById('summary-total').textContent = `$${total.toFixed(2)}`;
+            
+            // Optional: Navigate to checkout
+            // showPage('checkout');
         }
 
         // --- QUANTITY SELECTOR FUNCTIONS ---
@@ -2079,17 +2624,17 @@
             const quantityInput = button.parentElement.querySelector('.quantity-input');
             let currentValue = parseInt(quantityInput.value);
             let newValue = currentValue + change;
-            
+                        
             // Ensure value stays within bounds
             if (newValue < 1) newValue = 1;
             if (newValue > 99) newValue = 99;
-            
+                        
             quantityInput.value = newValue;
-            
+                        
             // Update button states
             const minusBtn = button.parentElement.querySelector('.quantity-btn:first-child');
             const plusBtn = button.parentElement.querySelector('.quantity-btn:last-child');
-            
+                        
             minusBtn.disabled = newValue <= 1;
             plusBtn.disabled = newValue >= 99;
         }
@@ -2099,15 +2644,15 @@
             const productCard = button.closest('.product-card');
             const productName = productCard.querySelector('h3 a').textContent;
             const quantity = productCard.querySelector('.quantity-input').value;
-            
+                        
             // Show success toast with product info
             showToast(`${quantity}x ${productName} added to cart!`, 'success');
-            
+                        
             // Optional: Add visual feedback to the button
             const originalText = button.textContent;
             button.textContent = 'Added!';
             button.style.backgroundColor = 'var(--green-500)';
-            
+                        
             setTimeout(() => {
                 button.textContent = originalText;
                 button.style.backgroundColor = 'var(--cyan-500)';
@@ -2118,22 +2663,20 @@
             pages.forEach(page => {
                 page.classList.add('hidden');
             });
-
             const targetPage = document.getElementById(pageId + '-page');
             if (targetPage) {
                 targetPage.classList.remove('hidden');
             }
 
             const isAuthPage = pageId === 'signin' || pageId === 'signup' || pageId === 'profile' || pageId === 'checkout';
-            
+                        
             mainHeader.classList.toggle('hidden', isAuthPage);
             authHeader.classList.toggle('hidden', !isAuthPage);
-            
+                        
             // Special footer logic
             const isContactPage = pageId === 'contact';
             mainFooter.classList.toggle('hidden', isAuthPage || isContactPage);
             contactFooter.classList.toggle('hidden', !isContactPage);
-
 
             if (clickedLink) {
                  navLinks.forEach(link => {
@@ -2143,15 +2686,13 @@
                       link.classList.add('active');
                  });
             }
-            
+                        
             window.scrollTo(0, 0);
         }
 
         // --- AUTHENTICATION LOGIC ---
-
         function updateAuthState() {
             const loggedInUserEmail = localStorage.getItem('loggedInUserEmail');
-
             if (loggedInUserEmail) {
                 // User is logged in
                 loginNavBtn.classList.add('hidden');
